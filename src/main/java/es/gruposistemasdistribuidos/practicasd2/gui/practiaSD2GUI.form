@@ -6,8 +6,6 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupPrivacidad">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroupPrivacidadPrivado">
-    </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupSeguridad">
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupAlbum">
@@ -16,22 +14,28 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="buttonGroupLicencia">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.ButtonGroup" name="buttonGroupVisibilidad">
+    </Component>
+    <Component class="javax.swing.JFileChooser" name="fileChooserCarpetas">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
+        <Property name="fileSelectionMode" type="int" value="1"/>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[644, 419]"/>
+        </Property>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[644, 419]"/>
+        </Property>
+        <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fileChooserCarpetasActionPerformed"/>
+      </Events>
     </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 330]"/>
-    </Property>
-    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 330]"/>
-    </Property>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[800, 330]"/>
+      <Dimension value="[815, 370]"/>
     </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -56,6 +60,395 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
+    <Container class="javax.swing.JLayeredPane" name="jLayeredPaneSubir">
+      <Properties>
+        <Property name="alignmentX" type="float" value="0.0"/>
+        <Property name="alignmentY" type="float" value="0.0"/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 330]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[800, 330]"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="true"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
+        </Constraint>
+      </Constraints>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanelSubir" alignment="1" max="-2" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Component id="jPanelSubir" alignment="1" max="-2" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="jPanelSubir">
+          <Properties>
+            <Property name="alignmentX" type="float" value="0.0"/>
+            <Property name="alignmentY" type="float" value="0.0"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[800, 330]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[800, 330]"/>
+            </Property>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[800, 330]"/>
+            </Property>
+          </Properties>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="false"/>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanelSubSubir">
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="0" y="40" width="800" height="290"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                  <Component id="jLabelPrivacidad" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jLabelRuta" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="350" max="-2" attributes="0"/>
+                          <Component id="jLabelPrivacidadElegida" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="355" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jButtonElegir" min="-2" pref="780" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelTipo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonArte" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonCaptura" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonFoto" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="188" pref="188" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonPrivado" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
+                                              <Component id="jCheckBoxAmigos" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="29" pref="29" max="-2" attributes="0"/>
+                                              <Component id="jCheckBoxFamiliares" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jRadioButtonPublico" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="174" pref="174" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabelSeguridad" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonSegura" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonModerada" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jRadioButtonRestringida" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
+                                      <Component id="jButtonOpcionales" min="-2" pref="490" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jButtonSubir" min="-2" pref="780" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="jLabelRuta" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabelPrivacidad" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabelPrivacidadElegida" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="185" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jButtonElegir" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Component id="jLabelTipo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="13" pref="13" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonArte" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
+                                              <Component id="jRadioButtonCaptura" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jRadioButtonFoto" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonPrivado" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                      <Component id="jCheckBoxAmigos" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                      <Component id="jCheckBoxFamiliares" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonPublico" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                                      <Component id="jLabelSeguridad" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonSegura" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonModerada" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
+                                      <Component id="jRadioButtonRestringida" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                              <Component id="jButtonOpcionales" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace min="5" pref="5" max="-2" attributes="0"/>
+                              <Component id="jButtonSubir" min="-2" pref="37" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="jLabelPrivacidadElegida">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="0"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Visible para todos"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="jCheckBoxAmigos">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="default"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tus Amigos"/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxAmigosActionPerformed"/>
+                    <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="jCheckBoxAmigosPropertyChange"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonSubir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Confirmar y Subir"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSubirActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelRuta">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Ruta no Elegida"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonSegura">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupSeguridad"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Segura"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonSeguraActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelSeguridad">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Seguridad"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonOpcionales">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Detalles Opcionales"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOpcionalesActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonCaptura">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupTipo"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Captura de Pantalla"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonFoto">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupTipo"/>
+                    </Property>
+                    <Property name="selected" type="boolean" value="true"/>
+                    <Property name="text" type="java.lang.String" value="Foto"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonFotoActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonPrivado">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupPrivacidad"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="S&#xf3;lo T&#xfa; (privado)"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonPrivadoActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonPublico">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupPrivacidad"/>
+                    </Property>
+                    <Property name="selected" type="boolean" value="true"/>
+                    <Property name="text" type="java.lang.String" value="Cualquier Persona (p&#xfa;blico)"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonPublicoActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelPrivacidad">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Privacidad"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonRestringida">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupSeguridad"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Restringida"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="jLabelTipo">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="14" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tipo de Contenido"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="jCheckBoxFamiliares">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="default"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Tus Familiares"/>
+                    <Property name="enabled" type="boolean" value="false"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBoxFamiliaresActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonArte">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupTipo"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Arte/Ilustracci&#xf3;n"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JRadioButton" name="jRadioButtonModerada">
+                  <Properties>
+                    <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                      <ComponentRef name="buttonGroupSeguridad"/>
+                    </Property>
+                    <Property name="selected" type="boolean" value="true"/>
+                    <Property name="text" type="java.lang.String" value="Moderada"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButtonElegir">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Elegir Carpeta a Subir"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonElegirActionPerformed"/>
+                  </Events>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="jLabelTitulo">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Flickr Folder Uploader - Pr&#xe1;ctica Sistemas Distribuidos 2 - Luis Le&#xf3;n, Paula &#xc1;lvarez y Sergio Valero"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="12" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButtonPermisos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Permisos"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPermisosActionPerformed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="605" y="10" width="180" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
     <Container class="javax.swing.JLayeredPane" name="jLayeredPaneOpcional">
       <Properties>
         <Property name="alignmentX" type="float" value="0.0"/>
@@ -109,151 +502,8 @@
             </Property>
           </Properties>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelPreguntaModificar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelTipoContenido" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelPreguntaMotificar2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabelTitulo1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
-                      <Component id="jButtonApi1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButtonPermisos1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabelAgregarTitulo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                              <Component id="jTextFieldAgregarTitulo" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelAgregarEtiquetas" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jTextFieldAgregarEtiquetas" min="-2" pref="247" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jLabelAgregarPersonas" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldAgregarPersonas" min="-2" pref="248" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabelAgregarDescripcion" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldAgregarDescripcion" min="-2" pref="247" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jButtonFinalizar" alignment="1" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonPublicDomainWork" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonPublicDomainDedication" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNinguno" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNoComercialCompartir" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonCreativeCommons" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNoDerivada" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonCompartirCreativeCommons" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonAtribucionCreativeCommons" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButtonNoComercialCreative" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelTitulo1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonApi1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonPermisos1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabelPreguntaModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTipoContenido" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelPreguntaMotificar2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                              <Component id="jRadioButtonCreativeCommons" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                      <Component id="jButtonFinalizar" min="-2" pref="53" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jRadioButtonAtribucionCreativeCommons" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonCompartirCreativeCommons" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jRadioButtonNoDerivada" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jRadioButtonNinguno" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonPublicDomainWork" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonPublicDomainDedication" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonNoComercialCompartir" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonNoComercialCreative" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabelAgregarTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldAgregarTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabelAgregarDescripcion" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldAgregarDescripcion" alignment="3" min="-2" pref="61" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelAgregarEtiquetas" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldAgregarEtiquetas" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTextFieldAgregarPersonas" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelAgregarPersonas" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-              </Group>
-            </DimensionLayout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="false"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButtonPermisos1">
@@ -263,6 +513,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPermisos1ActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="694" y="11" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTitulo1">
               <Properties>
@@ -271,6 +526,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Flickr Folder Uploader - Pr&#xe1;ctica Sistemas Distribuidos 2 - Luis Le&#xf3;n, Paula &#xc1;lvarez y Sergio Valero"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="10" y="12" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JButton" name="jButtonApi1">
               <Properties>
@@ -279,19 +539,37 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonApi1ActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="605" y="11" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelAgregarTitulo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar Titulo"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="31" y="93" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarTitulo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Opcional"/>
+                <Property name="toolTipText" type="java.lang.String" value="Opcional"/>
+                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                  <Color id="Cursor de Texto"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldAgregarTituloActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="134" y="90" width="249" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelPreguntaModificar">
               <Properties>
@@ -300,6 +578,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="&#xbf;Desea modificar alg&#xfa;n dato m&#xe1;s? (Se aplicar&#xe1; a todo"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="167" y="47" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelTipoContenido">
               <Properties>
@@ -308,6 +591,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="tipoContenido"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="498" y="47" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelPreguntaMotificar2">
               <Properties>
@@ -316,41 +604,81 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value=")"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="590" y="47" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelAgregarDescripcion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar descripci&#xf3;n"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="31" y="121" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarDescripcion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Opcional"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="136" y="121" width="247" height="38"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelAgregarEtiquetas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar etiquetas"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="31" y="165" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarEtiquetas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Separar etiquetas con espacios"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="136" y="165" width="247" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelAgregarPersonas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Agregar personas"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="31" y="199" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarPersonas">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Escribir nombre o direcci&#xf3;n de correo electr&#xf3;nico"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="135" y="196" width="248" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Licencias"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="70" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonNinguno">
               <Properties>
@@ -359,6 +687,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ninguno (Todos los derechos reservados)"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="90" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonPublicDomainWork">
               <Properties>
@@ -367,6 +700,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Public Domain Work"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="113" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonPublicDomainDedication">
               <Properties>
@@ -378,6 +716,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonPublicDomainDedicationActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="136" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonNoComercialCompartir">
               <Properties>
@@ -386,6 +729,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-No comercial-Compartir bajo la misma licencia de Creative Commons"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="159" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonNoComercialCreative">
               <Properties>
@@ -394,6 +742,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-No comercial de Creative Commons"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="182" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonCreativeCommons">
               <Properties>
@@ -405,6 +758,11 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonCreativeCommonsActionPerformed"/>
               </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="208" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonAtribucionCreativeCommons">
               <Properties>
@@ -413,6 +771,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n de Creative Commons"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="231" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonCompartirCreativeCommons">
               <Properties>
@@ -421,6 +784,11 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-Compartir bajo la misma licencia de Creative Commons"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="257" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
             <Component class="javax.swing.JRadioButton" name="jRadioButtonNoDerivada">
               <Properties>
@@ -429,11 +797,66 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-No derivadas de Creative Commons"/>
               </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="401" y="280" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
-            <Component class="javax.swing.JButton" name="jButtonFinalizar">
+            <Component class="javax.swing.JButton" name="jButtonVolver">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Finalizar"/>
+                <Property name="text" type="java.lang.String" value="Volver"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonVolverActionPerformed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="30" y="260" width="352" height="53"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelVisibilidad">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Visibilidad en B&#xfa;squedas:"/>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="20" y="230" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButtonPrivada">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupVisibilidad"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Privada"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonPrivadaActionPerformed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="260" y="230" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButtonPublica">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupVisibilidad"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="P&#xfa;blica"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonPublicaActionPerformed"/>
+              </Events>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="160" y="230" width="-1" height="-1"/>
+                </Constraint>
+              </Constraints>
             </Component>
           </SubComponents>
         </Container>
@@ -911,360 +1334,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Continuar"/>
               </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JLayeredPane" name="jLayeredPaneSubir">
-      <Properties>
-        <Property name="alignmentX" type="float" value="0.0"/>
-        <Property name="alignmentY" type="float" value="0.0"/>
-        <Property name="enabled" type="boolean" value="false"/>
-        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[800, 330]"/>
-        </Property>
-        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[800, 330]"/>
-        </Property>
-        <Property name="opaque" type="boolean" value="true"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="0" y="0" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jPanelSubir" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="jPanelSubir" min="-2" max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Container class="javax.swing.JPanel" name="jPanelSubir">
-          <Properties>
-            <Property name="alignmentX" type="float" value="0.0"/>
-            <Property name="alignmentY" type="float" value="0.0"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 330]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 330]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[800, 330]"/>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButtonElegir" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButtonFoto" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelTipo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonCaptura" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonArte" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabelPrivacidadElegida" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jLabelRuta" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                      <Component id="jLabelPrivacidad" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jLabelSeguridad" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="45" pref="45" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jCheckBoxFamiliares" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jCheckBoxAmigos" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Component id="jRadioButtonPublico" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jRadioButtonPrivado" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jRadioButtonSegura" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonModerada" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jRadioButtonRestringida" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Component id="jButtonSubir" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelTitulo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="8" max="32767" attributes="0"/>
-                              <Component id="jButtonApi" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonPermisos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="23" pref="23" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
-                              <Component id="jLabelSeguridad" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jRadioButtonSegura" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jRadioButtonFoto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabelPrivacidadElegida" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="3" attributes="0">
-                                                  <Component id="jRadioButtonCaptura" alignment="3" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jRadioButtonPrivado" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jRadioButtonArte" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                              <Component id="jCheckBoxAmigos" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jCheckBoxFamiliares" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jRadioButtonPublico" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonModerada" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jRadioButtonRestringida" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonApi" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButtonPermisos" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                              <Component id="jButtonElegir" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jLabelRuta" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLabelTipo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelPrivacidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
-                      <Component id="jButtonSubir" min="-2" pref="37" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabelTitulo">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Flickr Folder Uploader - Pr&#xe1;ctica Sistemas Distribuidos 2 - Luis Le&#xf3;n, Paula &#xc1;lvarez y Sergio Valero"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonApi">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Clave API"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonApiActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonPermisos">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Permisos"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPermisosActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonElegir">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Elegir Carpeta a Subir"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonElegirActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelRuta">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ruta Elegida"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelTipo">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Tipo de Contenido"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonFoto">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroupTipo"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Foto"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonFotoActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonCaptura">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroupTipo"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Captura de Pantalla"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonArte">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroupTipo"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Arte/Ilustracci&#xf3;n"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelPrivacidad">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Privacidad"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelPrivacidadElegida">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="12" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="S&#xf3;lo visible para ti"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonPrivado">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="S&#xf3;lo T&#xfa; (privado)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBoxAmigos">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroupPrivacidadPrivado"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Tus Amigos"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JCheckBox" name="jCheckBoxFamiliares">
-              <Properties>
-                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-                  <ComponentRef name="buttonGroupPrivacidadPrivado"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Tus Familiares"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonPublico">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Cualquier Persona (p&#xfa;blico)"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabelSeguridad">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Tahoma" size="14" style="0"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Seguridad"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonSegura">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Segura"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonSeguraActionPerformed"/>
-              </Events>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonModerada">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Moderada"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JRadioButton" name="jRadioButtonRestringida">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Restringida"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="jButtonSubir">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Confirmar y Subir"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSubirActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

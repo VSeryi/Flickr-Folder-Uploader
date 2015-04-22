@@ -103,7 +103,6 @@ public class UploadPhoto {
 
     public UploadPhoto(String apiKey, String nsid, String sharedSecret, File authsDir, String username) throws FlickrException {
         flickr = new Flickr(apiKey, sharedSecret, new REST());
-
         this.username = username;
         this.nsid = nsid;
         // this.sharedSecret = sharedSecret;
