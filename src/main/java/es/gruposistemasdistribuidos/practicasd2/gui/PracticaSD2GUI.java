@@ -818,6 +818,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         buttonGroupGrupos.add(jRadioButtonNoGrupos);
         jRadioButtonNoGrupos.setText("No");
+        jRadioButtonNoGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonNoGruposActionPerformed(evt);
+            }
+        });
 
         jListGrupos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPaneGrupos.setViewportView(jListGrupos);
@@ -1020,6 +1025,10 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private void jRadioButtonSiGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiGruposActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonSiGruposActionPerformed
+
+    private void jRadioButtonNoGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoGruposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonNoGruposActionPerformed
 
     /**
      * @param args the command line arguments
