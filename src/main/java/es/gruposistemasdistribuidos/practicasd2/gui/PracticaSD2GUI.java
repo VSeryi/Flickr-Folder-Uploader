@@ -9,32 +9,49 @@ import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
 import java.awt.Color;
 import java.awt.Component;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 
 /**
  *
  * @author S.Valeror
  */
-public class PractiaSD2GUI extends javax.swing.JFrame {
+public class PracticaSD2GUI extends javax.swing.JFrame {
 
     private Sesion sesion;
 
     /**
      * Creates new form practiaSD2GUI
      */
-    public PractiaSD2GUI() {
+    public PracticaSD2GUI() {
         sesion = new Sesion();
         initComponents();
         jLayeredPaneAlbum.setVisible(false);
         jLayeredPaneOpcional.setVisible(false);
         jLayeredPaneGrupos.setVisible(false);
-        if (!(sesion.isPermiso())) {
+        jPanelSubSubir.setVisible(true);
+        /*if (!(sesion.isPermiso())) {
             for (Component c : jPanelSubSubir.getComponents()) {
                 c.setEnabled(false);
             }
-        }
+        } */
     }
-
+    public void loading (){
+        
+        for(int i = 0; i< 10; i++){
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jLabelProgresoN1.setText(Integer.toString(i));
+            
+        }
+        jLayeredPaneProgressBar.setVisible(false);
+        jLayeredPaneAlbum.setVisible(true);
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -74,12 +91,9 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         jRadioButtonModerada = new javax.swing.JRadioButton();
         jButtonElegir = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
-        jButtonPermisos = new javax.swing.JButton();
         jLayeredPaneOpcional = new javax.swing.JLayeredPane();
         jPanelOpcional = new javax.swing.JPanel();
-        jButtonPermisos1 = new javax.swing.JButton();
         jLabelTitulo1 = new javax.swing.JLabel();
-        jButtonApi1 = new javax.swing.JButton();
         jLabelAgregarTitulo = new javax.swing.JLabel();
         jTextFieldAgregarTitulo = new javax.swing.JTextField();
         jLabelPreguntaModificar = new javax.swing.JLabel();
@@ -105,11 +119,17 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         jLabelVisibilidad = new javax.swing.JLabel();
         jRadioButtonPrivada = new javax.swing.JRadioButton();
         jRadioButtonPublica = new javax.swing.JRadioButton();
+        jLayeredPaneProgressBar = new javax.swing.JLayeredPane();
+        jPanelProgressBar = new javax.swing.JPanel();
+        jProgressBarSubiendo = new javax.swing.JProgressBar();
+        jLabelProgreso = new javax.swing.JLabel();
+        jLabelProgresoN1 = new javax.swing.JLabel();
+        jLabelProgreso2 = new javax.swing.JLabel();
+        jLabelProgresoN2 = new javax.swing.JLabel();
+        jLabelProgreso3 = new javax.swing.JLabel();
         jLayeredPaneAlbum = new javax.swing.JLayeredPane();
         jPanelAlbum = new javax.swing.JPanel();
         jLabelTituloAlbum = new javax.swing.JLabel();
-        jButtonApiAlbum = new javax.swing.JButton();
-        jButtonPermisosAlbum = new javax.swing.JButton();
         jLabelPreguntaAlbum = new javax.swing.JLabel();
         jLabelTipoContenidoAlbum = new javax.swing.JLabel();
         jLabelPreguntaAlbum2 = new javax.swing.JLabel();
@@ -123,8 +143,6 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         jButtonContinuar = new javax.swing.JButton();
         jLayeredPaneGrupos = new javax.swing.JLayeredPane();
         jPanelGrupos = new javax.swing.JPanel();
-        jButtonApiGrupos = new javax.swing.JButton();
-        jButtonPermisosGrupos = new javax.swing.JButton();
         jLabelTituloGrupos = new javax.swing.JLabel();
         jLabelPreguntaGrupos = new javax.swing.JLabel();
         jLabelTipoContenidoGrupos = new javax.swing.JLabel();
@@ -283,7 +301,7 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
             .addGroup(jPanelSubSubirLayout.createSequentialGroup()
                 .addGap(350, 350, 350)
                 .addComponent(jLabelPrivacidadElegida)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(358, Short.MAX_VALUE))
             .addGroup(jPanelSubSubirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelSubSubirLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -329,7 +347,7 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
                 .addComponent(jLabelPrivacidad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelPrivacidadElegida)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
             .addGroup(jPanelSubSubirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelSubSubirLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -378,14 +396,6 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         jLabelTitulo.setText("Flickr Folder Uploader - Práctica Sistemas Distribuidos 2 - Luis León, Paula Álvarez y Sergio Valero");
         jPanelSubir.add(jLabelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
 
-        jButtonPermisos.setText("Permisos");
-        jButtonPermisos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPermisosActionPerformed(evt);
-            }
-        });
-        jPanelSubir.add(jButtonPermisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 10, 180, -1));
-
         javax.swing.GroupLayout jLayeredPaneSubirLayout = new javax.swing.GroupLayout(jLayeredPaneSubir);
         jLayeredPaneSubir.setLayout(jLayeredPaneSubirLayout);
         jLayeredPaneSubirLayout.setHorizontalGroup(
@@ -414,25 +424,9 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         jPanelOpcional.setPreferredSize(new java.awt.Dimension(800, 330));
         jPanelOpcional.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonPermisos1.setText("Permisos");
-        jButtonPermisos1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPermisos1ActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jButtonPermisos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(694, 11, -1, -1));
-
         jLabelTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelTitulo1.setText("Flickr Folder Uploader - Práctica Sistemas Distribuidos 2 - Luis León, Paula Álvarez y Sergio Valero");
         jPanelOpcional.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
-
-        jButtonApi1.setText("Clave API");
-        jButtonApi1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonApi1ActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jButtonApi1, new org.netbeans.lib.awtextra.AbsoluteConstraints(605, 11, -1, -1));
 
         jLabelAgregarTitulo.setText("Agregar Titulo");
         jPanelOpcional.add(jLabelAgregarTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 93, -1, -1));
@@ -572,6 +566,84 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
 
         getContentPane().add(jLayeredPaneOpcional, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLayeredPaneProgressBar.setAlignmentX(0.0F);
+        jLayeredPaneProgressBar.setAlignmentY(0.0F);
+        jLayeredPaneProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
+        jLayeredPaneProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
+        jLayeredPaneProgressBar.setOpaque(true);
+        jLayeredPaneProgressBar.setPreferredSize(new java.awt.Dimension(800, 330));
+
+        jPanelProgressBar.setAlignmentX(0.0F);
+        jPanelProgressBar.setAlignmentY(0.0F);
+        jPanelProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
+        jPanelProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
+        jPanelProgressBar.setPreferredSize(new java.awt.Dimension(800, 330));
+
+        jLabelProgreso.setText("Progreso: ");
+
+        jLabelProgresoN1.setText("n1");
+
+        jLabelProgreso2.setText("ficheros subidos, ");
+
+        jLabelProgresoN2.setText("n2");
+
+        jLabelProgreso3.setText("pendientes");
+
+        javax.swing.GroupLayout jPanelProgressBarLayout = new javax.swing.GroupLayout(jPanelProgressBar);
+        jPanelProgressBar.setLayout(jPanelProgressBarLayout);
+        jPanelProgressBarLayout.setHorizontalGroup(
+            jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                .addGroup(jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jProgressBarSubiendo, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(jLabelProgreso)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabelProgresoN1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelProgreso2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelProgresoN2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelProgreso3)))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPanelProgressBarLayout.setVerticalGroup(
+            jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jProgressBarSubiendo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelProgreso)
+                    .addComponent(jLabelProgresoN1)
+                    .addComponent(jLabelProgreso2)
+                    .addComponent(jLabelProgresoN2)
+                    .addComponent(jLabelProgreso3))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jLayeredPaneProgressBarLayout = new javax.swing.GroupLayout(jLayeredPaneProgressBar);
+        jLayeredPaneProgressBar.setLayout(jLayeredPaneProgressBarLayout);
+        jLayeredPaneProgressBarLayout.setHorizontalGroup(
+            jLayeredPaneProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneProgressBarLayout.createSequentialGroup()
+                .addComponent(jPanelProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPaneProgressBarLayout.setVerticalGroup(
+            jLayeredPaneProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneProgressBarLayout.createSequentialGroup()
+                .addComponent(jPanelProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPaneProgressBar.setLayer(jPanelProgressBar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        getContentPane().add(jLayeredPaneProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         jLayeredPaneAlbum.setAlignmentX(0.0F);
         jLayeredPaneAlbum.setAlignmentY(0.0F);
         jLayeredPaneAlbum.setAutoscrolls(true);
@@ -587,20 +659,6 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
 
         jLabelTituloAlbum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelTituloAlbum.setText("Flickr Folder Uploader - Práctica Sistemas Distribuidos 2 - Luis León, Paula Álvarez y Sergio Valero");
-
-        jButtonApiAlbum.setText("Clave API");
-        jButtonApiAlbum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonApiAlbumActionPerformed(evt);
-            }
-        });
-
-        jButtonPermisosAlbum.setText("Permisos");
-        jButtonPermisosAlbum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPermisosAlbumActionPerformed(evt);
-            }
-        });
 
         jLabelPreguntaAlbum.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelPreguntaAlbum.setText("¿Desea añadir estas");
@@ -649,20 +707,15 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAlbumLayout.createSequentialGroup()
                         .addGap(315, 315, 315)
                         .addComponent(jRadioButtonSiAlbum)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonNoAlbum)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                        .addComponent(jRadioButtonNoAlbum))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAlbumLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jLabelTituloAlbum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(jButtonApiAlbum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonPermisosAlbum)))
-                .addGap(24, 24, 24))
+                        .addComponent(jLabelTituloAlbum)))
+                .addGap(24, 196, Short.MAX_VALUE))
             .addGroup(jPanelAlbumLayout.createSequentialGroup()
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
@@ -687,10 +740,7 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
             jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelAlbumLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTituloAlbum)
-                    .addComponent(jButtonApiAlbum)
-                    .addComponent(jButtonPermisosAlbum))
+                .addComponent(jLabelTituloAlbum)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPreguntaAlbum)
@@ -712,7 +762,7 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabelDescripcionAlbum)))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -745,20 +795,6 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         jPanelGrupos.setMaximumSize(new java.awt.Dimension(800, 330));
         jPanelGrupos.setMinimumSize(new java.awt.Dimension(800, 330));
         jPanelGrupos.setPreferredSize(new java.awt.Dimension(800, 330));
-
-        jButtonApiGrupos.setText("Clave API");
-        jButtonApiGrupos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonApiGruposActionPerformed(evt);
-            }
-        });
-
-        jButtonPermisosGrupos.setText("Permisos");
-        jButtonPermisosGrupos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonPermisosGruposActionPerformed(evt);
-            }
-        });
 
         jLabelTituloGrupos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelTituloGrupos.setText("Flickr Folder Uploader - Práctica Sistemas Distribuidos 2 - Luis León, Paula Álvarez y Sergio Valero");
@@ -816,20 +852,14 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelPreguntaGrupos2))
                             .addComponent(jLabelTituloGrupos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                        .addComponent(jButtonApiGrupos)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonPermisosGrupos)))
+                        .addGap(0, 172, Short.MAX_VALUE)))
                 .addGap(25, 25, 25))
         );
         jPanelGruposLayout.setVerticalGroup(
             jPanelGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGruposLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelTituloGrupos)
-                    .addComponent(jButtonApiGrupos)
-                    .addComponent(jButtonPermisosGrupos))
+                .addComponent(jLabelTituloGrupos)
                 .addGap(18, 18, 18)
                 .addGroup(jPanelGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelPreguntaGrupos)
@@ -842,7 +872,7 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonContinuarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                .addComponent(jButtonContinuarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -867,15 +897,6 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonPermisosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPermisosActionPerformed
-        sesion.setPermiso(true);
-        if (sesion.isPermiso()) {
-            for (Component c : jPanelSubSubir.getComponents()) {
-                c.setEnabled(true);
-            }
-        }
-    }//GEN-LAST:event_jButtonPermisosActionPerformed
-
     private void jButtonElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElegirActionPerformed
         int returnVal = fileChooserCarpetas.showOpenDialog(jPanelSubir);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -895,16 +916,11 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonSeguraActionPerformed
 
     private void jButtonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirActionPerformed
-        // TODO add your handling code here:
+        jLayeredPaneSubir.setVisible(false);
+        jLayeredPaneProgressBar.setVisible(true);
+        loading();
+        
     }//GEN-LAST:event_jButtonSubirActionPerformed
-
-    private void jButtonApiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApiAlbumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonApiAlbumActionPerformed
-
-    private void jButtonPermisosAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPermisosAlbumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonPermisosAlbumActionPerformed
 
     private void jRadioButtonSiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiAlbumActionPerformed
         // TODO add your handling code here:
@@ -913,26 +929,6 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonContinuarActionPerformed
-
-    private void jButtonApiGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApiGruposActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonApiGruposActionPerformed
-
-    private void jButtonPermisosGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPermisosGruposActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonPermisosGruposActionPerformed
-
-    private void jRadioButtonSiGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiGruposActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonSiGruposActionPerformed
-
-    private void jButtonApi1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApi1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonApi1ActionPerformed
-
-    private void jButtonPermisos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPermisos1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonPermisos1ActionPerformed
 
     private void jTextFieldAgregarTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAgregarTituloActionPerformed
         // TODO add your handling code here:
@@ -991,9 +987,12 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
             jLabelPrivacidadElegida.setText("Visible para tus amigos y tus familiares.");
         } else {
-            if (jCheckBoxAmigos.isSelected()) {
+            if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
                 jLabelPrivacidadElegida.setText("Visible para tus amigos.");
-            } else {
+            } else if(jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
+                jLabelPrivacidadElegida.setText("Visible para tus familiares.");
+                
+            }else{
                 jRadioButtonPrivadoActionPerformed(null);
             }
         }
@@ -1004,10 +1003,12 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
         if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
             jLabelPrivacidadElegida.setText("Visible para tus amigos y tus familiares.");
         } else {
-            if (jCheckBoxFamiliares.isSelected()) {
+            if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
+                jLabelPrivacidadElegida.setText("Visible para tus familiares.");
+            } else if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()){               
                 jLabelPrivacidadElegida.setText("Visible para tus amigos.");
-            } else {
-                jRadioButtonPrivadoActionPerformed(null);
+            }else{
+                 jRadioButtonPrivadoActionPerformed(null);
             }
         }
     }//GEN-LAST:event_jCheckBoxFamiliaresActionPerformed
@@ -1015,6 +1016,10 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     private void jCheckBoxAmigosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCheckBoxAmigosPropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBoxAmigosPropertyChange
+
+    private void jRadioButtonSiGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiGruposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonSiGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1034,29 +1039,30 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PractiaSD2GUI.class
+            java.util.logging.Logger.getLogger(PracticaSD2GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PractiaSD2GUI.class
+            java.util.logging.Logger.getLogger(PracticaSD2GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PractiaSD2GUI.class
+            java.util.logging.Logger.getLogger(PracticaSD2GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PractiaSD2GUI.class
+            java.util.logging.Logger.getLogger(PracticaSD2GUI.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PractiaSD2GUI().setVisible(true);
+                new PracticaSD2GUI().setVisible(true);
             }
         });
     }
 
+    // <editor-fold desc="generated code">
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupAlbum;
     private javax.swing.ButtonGroup buttonGroupGrupos;
@@ -1066,17 +1072,10 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.ButtonGroup buttonGroupVisibilidad;
     private javax.swing.JFileChooser fileChooserCarpetas;
-    private javax.swing.JButton jButtonApi1;
-    private javax.swing.JButton jButtonApiAlbum;
-    private javax.swing.JButton jButtonApiGrupos;
     private javax.swing.JButton jButtonContinuar;
     private javax.swing.JButton jButtonContinuarGrupos;
     private javax.swing.JButton jButtonElegir;
     private javax.swing.JButton jButtonOpcionales;
-    private javax.swing.JButton jButtonPermisos;
-    private javax.swing.JButton jButtonPermisos1;
-    private javax.swing.JButton jButtonPermisosAlbum;
-    private javax.swing.JButton jButtonPermisosGrupos;
     private javax.swing.JButton jButtonSubir;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JCheckBox jCheckBoxAmigos;
@@ -1096,6 +1095,11 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPreguntaMotificar2;
     private javax.swing.JLabel jLabelPrivacidad;
     private javax.swing.JLabel jLabelPrivacidadElegida;
+    private javax.swing.JLabel jLabelProgreso;
+    private javax.swing.JLabel jLabelProgreso2;
+    private javax.swing.JLabel jLabelProgreso3;
+    private javax.swing.JLabel jLabelProgresoN1;
+    private javax.swing.JLabel jLabelProgresoN2;
     private javax.swing.JLabel jLabelRuta;
     private javax.swing.JLabel jLabelSeguridad;
     private javax.swing.JLabel jLabelTipo;
@@ -1110,13 +1114,16 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPaneAlbum;
     private javax.swing.JLayeredPane jLayeredPaneGrupos;
     private javax.swing.JLayeredPane jLayeredPaneOpcional;
+    private javax.swing.JLayeredPane jLayeredPaneProgressBar;
     private javax.swing.JLayeredPane jLayeredPaneSubir;
     private javax.swing.JList jListGrupos;
     private javax.swing.JPanel jPanelAlbum;
     private javax.swing.JPanel jPanelGrupos;
     private javax.swing.JPanel jPanelOpcional;
+    private javax.swing.JPanel jPanelProgressBar;
     private javax.swing.JPanel jPanelSubSubir;
     private javax.swing.JPanel jPanelSubir;
+    private javax.swing.JProgressBar jProgressBarSubiendo;
     private javax.swing.JRadioButton jRadioButtonArte;
     private javax.swing.JRadioButton jRadioButtonAtribucionCreativeCommons;
     private javax.swing.JRadioButton jRadioButtonCaptura;
@@ -1149,4 +1156,5 @@ public class PractiaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAgregarTitulo;
     private javax.swing.JTextField jTextFieldTituloAlbum;
     // End of variables declaration//GEN-END:variables
+    // </editor-fold>
 }
