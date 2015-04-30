@@ -69,28 +69,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupLicencia = new javax.swing.ButtonGroup();
         buttonGroupVisibilidad = new javax.swing.ButtonGroup();
         fileChooserCarpetas = new javax.swing.JFileChooser();
-        jLayeredPaneSubir = new javax.swing.JLayeredPane();
-        jPanelSubir = new javax.swing.JPanel();
-        jPanelSubSubir = new javax.swing.JPanel();
-        jLabelPrivacidadElegida = new javax.swing.JLabel();
-        jCheckBoxAmigos = new javax.swing.JCheckBox();
-        jButtonSubir = new javax.swing.JButton();
-        jLabelRuta = new javax.swing.JLabel();
-        jRadioButtonSegura = new javax.swing.JRadioButton();
-        jLabelSeguridad = new javax.swing.JLabel();
-        jButtonOpcionales = new javax.swing.JButton();
-        jRadioButtonCaptura = new javax.swing.JRadioButton();
-        jRadioButtonFoto = new javax.swing.JRadioButton();
-        jRadioButtonPrivado = new javax.swing.JRadioButton();
-        jRadioButtonPublico = new javax.swing.JRadioButton();
-        jLabelPrivacidad = new javax.swing.JLabel();
-        jRadioButtonRestringida = new javax.swing.JRadioButton();
-        jLabelTipo = new javax.swing.JLabel();
-        jCheckBoxFamiliares = new javax.swing.JCheckBox();
-        jRadioButtonArte = new javax.swing.JRadioButton();
-        jRadioButtonModerada = new javax.swing.JRadioButton();
-        jButtonElegir = new javax.swing.JButton();
-        jLabelTitulo = new javax.swing.JLabel();
         jLayeredPaneOpcional = new javax.swing.JLayeredPane();
         jPanelOpcional = new javax.swing.JPanel();
         jLabelTitulo1 = new javax.swing.JLabel();
@@ -119,6 +97,28 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jLabelVisibilidad = new javax.swing.JLabel();
         jRadioButtonPrivada = new javax.swing.JRadioButton();
         jRadioButtonPublica = new javax.swing.JRadioButton();
+        jLayeredPaneSubir = new javax.swing.JLayeredPane();
+        jPanelSubir = new javax.swing.JPanel();
+        jPanelSubSubir = new javax.swing.JPanel();
+        jLabelPrivacidadElegida = new javax.swing.JLabel();
+        jCheckBoxAmigos = new javax.swing.JCheckBox();
+        jButtonSubir = new javax.swing.JButton();
+        jLabelRuta = new javax.swing.JLabel();
+        jRadioButtonSegura = new javax.swing.JRadioButton();
+        jLabelSeguridad = new javax.swing.JLabel();
+        jButtonOpcionales = new javax.swing.JButton();
+        jRadioButtonCaptura = new javax.swing.JRadioButton();
+        jRadioButtonFoto = new javax.swing.JRadioButton();
+        jRadioButtonPrivado = new javax.swing.JRadioButton();
+        jRadioButtonPublico = new javax.swing.JRadioButton();
+        jLabelPrivacidad = new javax.swing.JLabel();
+        jRadioButtonRestringida = new javax.swing.JRadioButton();
+        jLabelTipo = new javax.swing.JLabel();
+        jCheckBoxFamiliares = new javax.swing.JCheckBox();
+        jRadioButtonArte = new javax.swing.JRadioButton();
+        jRadioButtonModerada = new javax.swing.JRadioButton();
+        jButtonElegir = new javax.swing.JButton();
+        jLabelTitulo = new javax.swing.JLabel();
         jLayeredPaneProgressBar = new javax.swing.JLayeredPane();
         jPanelProgressBar = new javax.swing.JPanel();
         jProgressBarSubiendo = new javax.swing.JProgressBar();
@@ -167,6 +167,162 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(815, 370));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLayeredPaneOpcional.setAlignmentX(0.0F);
+        jLayeredPaneOpcional.setAlignmentY(0.0F);
+        jLayeredPaneOpcional.setMaximumSize(new java.awt.Dimension(800, 330));
+        jLayeredPaneOpcional.setMinimumSize(new java.awt.Dimension(800, 330));
+        jLayeredPaneOpcional.setOpaque(true);
+
+        jPanelOpcional.setAlignmentX(0.0F);
+        jPanelOpcional.setAlignmentY(0.0F);
+        jPanelOpcional.setDoubleBuffered(false);
+        jPanelOpcional.setMaximumSize(new java.awt.Dimension(800, 330));
+        jPanelOpcional.setMinimumSize(new java.awt.Dimension(800, 330));
+        jPanelOpcional.setPreferredSize(new java.awt.Dimension(800, 330));
+        jPanelOpcional.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelTitulo1.setText("Flickr Folder Uploader - Práctica Sistemas Distribuidos 2 - Luis León, Paula Álvarez y Sergio Valero");
+        jPanelOpcional.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
+
+        jLabelAgregarTitulo.setText("Agregar Titulo");
+        jPanelOpcional.add(jLabelAgregarTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 93, -1, -1));
+
+        jTextFieldAgregarTitulo.setToolTipText("Opcional");
+        jTextFieldAgregarTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextFieldAgregarTitulo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldAgregarTituloActionPerformed(evt);
+            }
+        });
+        jPanelOpcional.add(jTextFieldAgregarTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 90, 249, -1));
+
+        jLabelPreguntaModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelPreguntaModificar.setText("¿Desea modificar algún dato más? (Se aplicará a todo");
+        jPanelOpcional.add(jLabelPreguntaModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 47, -1, -1));
+
+        jLabelTipoContenido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelTipoContenido.setText("tipoContenido");
+        jPanelOpcional.add(jLabelTipoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 47, -1, -1));
+
+        jLabelPreguntaMotificar2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelPreguntaMotificar2.setText(")");
+        jPanelOpcional.add(jLabelPreguntaMotificar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 47, -1, -1));
+
+        jLabelAgregarDescripcion.setText("Agregar descripción");
+        jPanelOpcional.add(jLabelAgregarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 121, -1, -1));
+
+        jTextFieldAgregarDescripcion.setText("Opcional");
+        jPanelOpcional.add(jTextFieldAgregarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 121, 247, 38));
+
+        jLabelAgregarEtiquetas.setText("Agregar etiquetas");
+        jPanelOpcional.add(jLabelAgregarEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 165, -1, -1));
+
+        jTextFieldAgregarEtiquetas.setText("Separar etiquetas con espacios");
+        jPanelOpcional.add(jTextFieldAgregarEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 165, 247, -1));
+
+        jLabelAgregarPersonas.setText("Agregar personas");
+        jPanelOpcional.add(jLabelAgregarPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 199, -1, -1));
+
+        jTextFieldAgregarPersonas.setText("Escribir nombre o dirección de correo electrónico");
+        jPanelOpcional.add(jTextFieldAgregarPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 196, 248, -1));
+
+        jLabel1.setText("Licencias");
+        jPanelOpcional.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 70, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonNinguno);
+        jRadioButtonNinguno.setText("Ninguno (Todos los derechos reservados)");
+        jPanelOpcional.add(jRadioButtonNinguno, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 90, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonPublicDomainWork);
+        jRadioButtonPublicDomainWork.setText("Public Domain Work");
+        jPanelOpcional.add(jRadioButtonPublicDomainWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 113, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonPublicDomainDedication);
+        jRadioButtonPublicDomainDedication.setText("Public Domain Dedication (CC0)");
+        jRadioButtonPublicDomainDedication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPublicDomainDedicationActionPerformed(evt);
+            }
+        });
+        jPanelOpcional.add(jRadioButtonPublicDomainDedication, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 136, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonNoComercialCompartir);
+        jRadioButtonNoComercialCompartir.setText("Atribución-No comercial-Compartir bajo la misma licencia de Creative Commons");
+        jPanelOpcional.add(jRadioButtonNoComercialCompartir, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 159, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonNoComercialCreative);
+        jRadioButtonNoComercialCreative.setText("Atribución-No comercial de Creative Commons");
+        jPanelOpcional.add(jRadioButtonNoComercialCreative, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 182, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonCreativeCommons);
+        jRadioButtonCreativeCommons.setText("Creative Commons Atribución-No Comercial - No Derivs");
+        jRadioButtonCreativeCommons.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCreativeCommonsActionPerformed(evt);
+            }
+        });
+        jPanelOpcional.add(jRadioButtonCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 208, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonAtribucionCreativeCommons);
+        jRadioButtonAtribucionCreativeCommons.setText("Atribución de Creative Commons");
+        jPanelOpcional.add(jRadioButtonAtribucionCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 231, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonCompartirCreativeCommons);
+        jRadioButtonCompartirCreativeCommons.setText("Atribución-Compartir bajo la misma licencia de Creative Commons");
+        jPanelOpcional.add(jRadioButtonCompartirCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 257, -1, -1));
+
+        buttonGroupLicencia.add(jRadioButtonNoDerivada);
+        jRadioButtonNoDerivada.setText("Atribución-No derivadas de Creative Commons");
+        jPanelOpcional.add(jRadioButtonNoDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 280, -1, -1));
+
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+        jPanelOpcional.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 352, 53));
+
+        jLabelVisibilidad.setText("Visibilidad en Búsquedas:");
+        jPanelOpcional.add(jLabelVisibilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        buttonGroupVisibilidad.add(jRadioButtonPrivada);
+        jRadioButtonPrivada.setText("Privada");
+        jRadioButtonPrivada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPrivadaActionPerformed(evt);
+            }
+        });
+        jPanelOpcional.add(jRadioButtonPrivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
+
+        buttonGroupVisibilidad.add(jRadioButtonPublica);
+        jRadioButtonPublica.setText("Pública");
+        jRadioButtonPublica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonPublicaActionPerformed(evt);
+            }
+        });
+        jPanelOpcional.add(jRadioButtonPublica, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        javax.swing.GroupLayout jLayeredPaneOpcionalLayout = new javax.swing.GroupLayout(jLayeredPaneOpcional);
+        jLayeredPaneOpcional.setLayout(jLayeredPaneOpcionalLayout);
+        jLayeredPaneOpcionalLayout.setHorizontalGroup(
+            jLayeredPaneOpcionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneOpcionalLayout.createSequentialGroup()
+                .addComponent(jPanelOpcional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPaneOpcionalLayout.setVerticalGroup(
+            jLayeredPaneOpcionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneOpcionalLayout.createSequentialGroup()
+                .addComponent(jPanelOpcional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPaneOpcional.setLayer(jPanelOpcional, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        getContentPane().add(jLayeredPaneOpcional, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jLayeredPaneSubir.setAlignmentX(0.0F);
         jLayeredPaneSubir.setAlignmentY(0.0F);
@@ -410,168 +566,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         getContentPane().add(jLayeredPaneSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLayeredPaneOpcional.setAlignmentX(0.0F);
-        jLayeredPaneOpcional.setAlignmentY(0.0F);
-        jLayeredPaneOpcional.setMaximumSize(new java.awt.Dimension(800, 330));
-        jLayeredPaneOpcional.setMinimumSize(new java.awt.Dimension(800, 330));
-        jLayeredPaneOpcional.setOpaque(true);
-
-        jPanelOpcional.setAlignmentX(0.0F);
-        jPanelOpcional.setAlignmentY(0.0F);
-        jPanelOpcional.setDoubleBuffered(false);
-        jPanelOpcional.setMaximumSize(new java.awt.Dimension(800, 330));
-        jPanelOpcional.setMinimumSize(new java.awt.Dimension(800, 330));
-        jPanelOpcional.setPreferredSize(new java.awt.Dimension(800, 330));
-        jPanelOpcional.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabelTitulo1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTitulo1.setText("Flickr Folder Uploader - Práctica Sistemas Distribuidos 2 - Luis León, Paula Álvarez y Sergio Valero");
-        jPanelOpcional.add(jLabelTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, -1));
-
-        jLabelAgregarTitulo.setText("Agregar Titulo");
-        jPanelOpcional.add(jLabelAgregarTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 93, -1, -1));
-
-        jTextFieldAgregarTitulo.setToolTipText("Opcional");
-        jTextFieldAgregarTitulo.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextFieldAgregarTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldAgregarTituloActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jTextFieldAgregarTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 90, 249, -1));
-
-        jLabelPreguntaModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelPreguntaModificar.setText("¿Desea modificar algún dato más? (Se aplicará a todo");
-        jPanelOpcional.add(jLabelPreguntaModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 47, -1, -1));
-
-        jLabelTipoContenido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelTipoContenido.setText("tipoContenido");
-        jPanelOpcional.add(jLabelTipoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 47, -1, -1));
-
-        jLabelPreguntaMotificar2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabelPreguntaMotificar2.setText(")");
-        jPanelOpcional.add(jLabelPreguntaMotificar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 47, -1, -1));
-
-        jLabelAgregarDescripcion.setText("Agregar descripción");
-        jPanelOpcional.add(jLabelAgregarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 121, -1, -1));
-
-        jTextFieldAgregarDescripcion.setText("Opcional");
-        jPanelOpcional.add(jTextFieldAgregarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 121, 247, 38));
-
-        jLabelAgregarEtiquetas.setText("Agregar etiquetas");
-        jPanelOpcional.add(jLabelAgregarEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 165, -1, -1));
-
-        jTextFieldAgregarEtiquetas.setText("Separar etiquetas con espacios");
-        jPanelOpcional.add(jTextFieldAgregarEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 165, 247, -1));
-
-        jLabelAgregarPersonas.setText("Agregar personas");
-        jPanelOpcional.add(jLabelAgregarPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 199, -1, -1));
-
-        jTextFieldAgregarPersonas.setText("Escribir nombre o dirección de correo electrónico");
-        jPanelOpcional.add(jTextFieldAgregarPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 196, 248, -1));
-
-        jLabel1.setText("Licencias");
-        jPanelOpcional.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 70, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonNinguno);
-        jRadioButtonNinguno.setText("Ninguno (Todos los derechos reservados)");
-        jPanelOpcional.add(jRadioButtonNinguno, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 90, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonPublicDomainWork);
-        jRadioButtonPublicDomainWork.setText("Public Domain Work");
-        jPanelOpcional.add(jRadioButtonPublicDomainWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 113, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonPublicDomainDedication);
-        jRadioButtonPublicDomainDedication.setText("Public Domain Dedication (CC0)");
-        jRadioButtonPublicDomainDedication.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonPublicDomainDedicationActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jRadioButtonPublicDomainDedication, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 136, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonNoComercialCompartir);
-        jRadioButtonNoComercialCompartir.setText("Atribución-No comercial-Compartir bajo la misma licencia de Creative Commons");
-        jPanelOpcional.add(jRadioButtonNoComercialCompartir, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 159, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonNoComercialCreative);
-        jRadioButtonNoComercialCreative.setText("Atribución-No comercial de Creative Commons");
-        jPanelOpcional.add(jRadioButtonNoComercialCreative, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 182, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonCreativeCommons);
-        jRadioButtonCreativeCommons.setText("Creative Commons Atribución-No Comercial - No Derivs");
-        jRadioButtonCreativeCommons.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonCreativeCommonsActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jRadioButtonCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 208, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonAtribucionCreativeCommons);
-        jRadioButtonAtribucionCreativeCommons.setText("Atribución de Creative Commons");
-        jPanelOpcional.add(jRadioButtonAtribucionCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 231, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonCompartirCreativeCommons);
-        jRadioButtonCompartirCreativeCommons.setText("Atribución-Compartir bajo la misma licencia de Creative Commons");
-        jPanelOpcional.add(jRadioButtonCompartirCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 257, -1, -1));
-
-        buttonGroupLicencia.add(jRadioButtonNoDerivada);
-        jRadioButtonNoDerivada.setText("Atribución-No derivadas de Creative Commons");
-        jPanelOpcional.add(jRadioButtonNoDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 280, -1, -1));
-
-        jButtonVolver.setText("Volver");
-        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonVolverActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 352, 53));
-
-        jLabelVisibilidad.setText("Visibilidad en Búsquedas:");
-        jPanelOpcional.add(jLabelVisibilidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-
-        buttonGroupVisibilidad.add(jRadioButtonPrivada);
-        jRadioButtonPrivada.setText("Privada");
-        jRadioButtonPrivada.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonPrivadaActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jRadioButtonPrivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
-
-        buttonGroupVisibilidad.add(jRadioButtonPublica);
-        jRadioButtonPublica.setText("Pública");
-        jRadioButtonPublica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonPublicaActionPerformed(evt);
-            }
-        });
-        jPanelOpcional.add(jRadioButtonPublica, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
-
-        javax.swing.GroupLayout jLayeredPaneOpcionalLayout = new javax.swing.GroupLayout(jLayeredPaneOpcional);
-        jLayeredPaneOpcional.setLayout(jLayeredPaneOpcionalLayout);
-        jLayeredPaneOpcionalLayout.setHorizontalGroup(
-            jLayeredPaneOpcionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneOpcionalLayout.createSequentialGroup()
-                .addComponent(jPanelOpcional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jLayeredPaneOpcionalLayout.setVerticalGroup(
-            jLayeredPaneOpcionalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneOpcionalLayout.createSequentialGroup()
-                .addComponent(jPanelOpcional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jLayeredPaneOpcional.setLayer(jPanelOpcional, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        getContentPane().add(jLayeredPaneOpcional, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jLayeredPaneProgressBar.setAlignmentX(0.0F);
         jLayeredPaneProgressBar.setAlignmentY(0.0F);
         jLayeredPaneProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
         jLayeredPaneProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
         jLayeredPaneProgressBar.setOpaque(true);
-        jLayeredPaneProgressBar.setPreferredSize(new java.awt.Dimension(800, 330));
 
         jPanelProgressBar.setAlignmentX(0.0F);
         jPanelProgressBar.setAlignmentY(0.0F);
@@ -702,10 +701,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jPanelAlbumLayout.setHorizontalGroup(
             jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAlbumLayout.createSequentialGroup()
                         .addGap(315, 315, 315)
@@ -718,23 +713,29 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addGap(24, 196, Short.MAX_VALUE))
             .addGroup(jPanelAlbumLayout.createSequentialGroup()
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                        .addGap(241, 241, 241)
-                        .addComponent(jLabelPreguntaAlbum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelTipoContenidoAlbum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelPreguntaAlbum2))
-                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabelDescripcionAlbum)
-                            .addComponent(jLabelNombreAlbum))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldTituloAlbum)
-                            .addComponent(jScrollPaneDescripcionAlbum, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                                .addGap(241, 241, 241)
+                                .addComponent(jLabelPreguntaAlbum)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelTipoContenidoAlbum)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelPreguntaAlbum2))
+                            .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                                .addGap(172, 172, 172)
+                                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabelDescripcionAlbum)
+                                    .addComponent(jLabelNombreAlbum))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextFieldTituloAlbum)
+                                    .addComponent(jScrollPaneDescripcionAlbum, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanelAlbumLayout.setVerticalGroup(
             jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
