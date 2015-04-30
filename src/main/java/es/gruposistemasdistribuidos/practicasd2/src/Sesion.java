@@ -8,18 +8,23 @@ package es.gruposistemasdistribuidos.practicasd2.src;
 import com.flickr4java.flickr.Flickr;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.REST;
+import com.flickr4java.flickr.RequestContext;
 import com.flickr4java.flickr.auth.Auth;
 import com.flickr4java.flickr.auth.Permission;
 import com.flickr4java.flickr.people.PeopleInterface;
 import com.flickr4java.flickr.people.User;
 import com.flickr4java.flickr.photos.licenses.LicensesInterface;
 import com.flickr4java.flickr.photos.upload.Ticket;
+import com.flickr4java.flickr.photos.upload.UploadInterface;
 import com.flickr4java.flickr.uploader.UploadMetaData;
 import com.flickr4java.flickr.uploader.Uploader;
 import es.gruposistemasdistribuidos.practicasd2.auth.AutorizacionesFlickr;
 import java.io.File;
+import java.util.AbstractSet;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,11 +37,18 @@ public class Sesion {
     private AutorizacionesFlickr autorizacion;
     private boolean permiso;
     private Flickr miFlickr;
+    private List<String> fotosSubidas;
+
+    public Flickr getMiFlickr() {
+        return miFlickr;
+    }
 
     public Sesion() {
 
         autorizacion = new AutorizacionesFlickr();
+        fotosSubidas = new ArrayList();
         miFlickr = new Flickr(autorizacion.getApi_key(), autorizacion.getSecret(), new REST());
+        miFlickr.setAuth(autorizacion.getAuth());
         Auth auth = autorizacion.getAuth();
         if (auth == null) {
             permiso = false;
@@ -59,7 +71,7 @@ public class Sesion {
         return permiso;
     }
 
-    public void uploadFolder(MetaData metaData) {
+    public void uploadFolder(MetaData metaData) throws FlickrException {
 
         UploadMetaData metaDataFlickr = new UploadMetaData();
 
@@ -75,8 +87,8 @@ public class Sesion {
         }
 
         metaDataFlickr.setContentType(metaData.getTipoContenido());
-        
-        if (!metaData.getTitulo().equals("")) {
+
+        if (metaData.getTitulo() != null) {
             metaDataFlickr.setTitle(metaData.getTitulo());
         }
 
@@ -84,74 +96,76 @@ public class Sesion {
             metaDataFlickr.setTags(metaData.getEtiquetas());
         }
 
-        if (!metaData.getDescripcion().equals("")) {
+        if (metaData.getDescripcion() != null) {
             metaDataFlickr.setDescription(metaData.getDescripcion());
         }
 
         metaDataFlickr.setAsync(true);
 
-        if (metaData.getVisibilidad()== 0) {
+        if (metaData.getVisibilidad() == 0) {
             metaDataFlickr.setHidden(false);
         } else if (metaData.getVisibilidad() == 1) {
             metaDataFlickr.setHidden(true);
         }
-        
+
         if (!metaData.getSeguridad().equals("")) {
             metaDataFlickr.setSafetyLevel(metaData.getSeguridad());
         }
-        
+        RequestContext.getRequestContext().setAuth(miFlickr.getAuth());
         Uploader uploader = miFlickr.getUploader();
         LicensesInterface licenser = miFlickr.getLicensesInterface();
-        PeopleInterface peopler = miFlickr.getPeopleInterface();
-       
-        List<Ticket> tickets = new ArrayList();
-        for (File f:metaData.getRuta().listFiles()) {
+        PeopleInterface peopler = miFlickr.getPeopleInterface();       
+
+        Set<String> tickets = new HashSet<String>();
+        for (File f : metaData.getCarpeta().listFiles()) {
             if (f.isFile()) {
                 try {
-                    String ticketName = uploader.upload(f,metaDataFlickr);
-                    Ticket ticket = new Ticket();
-                    ticket.setTicketId(ticketName);
-                    tickets.add(ticket);
+                    String ticketName = uploader.upload(f, metaDataFlickr);                    
+                    tickets.add(ticketName);
                 } catch (FlickrException ex) {
                     Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
-        for (Ticket t:tickets) {
-            while (!t.hasCompleted()) {
-                
+        UploadInterface inter = miFlickr.getUploadInterface();
+        boolean completada = false;
+        while(!completada){
+            boolean estaCompletada=true;
+            for (Ticket t : inter.checkTickets(tickets)) {
+                estaCompletada = estaCompletada && (t.getStatus() == 1);
             }
+            completada = estaCompletada;
+        }
+        for (Ticket t : inter.checkTickets(tickets)) {
             String fotoId = t.getPhotoId();
+            fotosSubidas.add(fotoId);
             try {
                 licenser.setLicense(fotoId, metaData.getLicencia());
             } catch (FlickrException ex) {
                 Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
             }
             String userID;
-            for(String s:metaData.getPersonas()){
-                userID = null;
-                User usuario = peopler.findByEmail(s);
-                if (usuario != null){
-                    userID = usuario.getId();
-                } else{
-                    usuario = peopler.findByUsername(s);
-                    if(usuario != null){
+            for (String s : metaData.getPersonas()) {
+                try {
+                    userID = null;
+                    User usuario = peopler.findByEmail(s);
+                    if (usuario != null) {
                         userID = usuario.getId();
+                    } else {
+                        usuario = peopler.findByUsername(s);
+                        if (usuario != null) {
+                            userID = usuario.getId();
+                        }
+
                     }
-                    
+                    peopler.add(fotoId, autorizacion.getUserID(), null);
+                } catch (FlickrException ex) {
+                    Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if (peopler.findByEmail(s) != null){
-                    userID = peopler.findByEmail(s).getID;
-                    
-                }
-                peopler.findByEmail(s);
-                peopler.findByUsername(s)
-                peopler.add(fotoId, autorizacion.getUserID(), null);
             }
-            
+
         }
-        
-        
+
         if (!metaData.getPersonas().isEmpty()) {
             // ...
         }

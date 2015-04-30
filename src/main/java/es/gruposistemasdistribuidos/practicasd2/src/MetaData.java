@@ -6,6 +6,7 @@
 package es.gruposistemasdistribuidos.practicasd2.src;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Collection;
 public class MetaData {
     
     //Atributos obligatorios
-    private File ruta;
+    private File carpeta;
     private String seguridad, tipoContenido;
     private int privacidad;
     //Atributos opcionales
@@ -27,7 +28,9 @@ public class MetaData {
     //Constructor
     public MetaData (File ruta, String seguridad, String tipoContenido, int privacidad){
         
-        this.ruta = ruta;
+        this.etiquetas = new ArrayList();
+        this.personas = new ArrayList();
+        this.carpeta = ruta;
         this.seguridad = seguridad;
         this.tipoContenido = tipoContenido;
         this.privacidad = privacidad; 
@@ -39,12 +42,12 @@ public class MetaData {
     
     //Getters & Setters
 
-    public File getRuta() {
-        return ruta;
+    public File getCarpeta() {
+        return carpeta;
     }
 
-    public void setRuta(File ruta) {
-        this.ruta = ruta;
+    public void setCarpeta(File ruta) {
+        this.carpeta = ruta;
     }
 
     public String getSeguridad() {

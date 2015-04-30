@@ -206,9 +206,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarDescripcion">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Opcional"/>
-              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Opcional"/>
+              </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="136" y="121" width="247" height="38"/>
@@ -226,9 +226,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarEtiquetas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Separar etiquetas con espacios"/>
-              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Separar etiquetas con espacios"/>
+              </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="136" y="165" width="247" height="-1"/>
@@ -246,9 +246,9 @@
               </Constraints>
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAgregarPersonas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Escribir nombre o direcci&#xf3;n de correo electr&#xf3;nico"/>
-              </Properties>
+              <AccessibilityProperties>
+                <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="Escribir nombre o direcci&#xf3;n de correo electr&#xf3;nico"/>
+              </AccessibilityProperties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="135" y="196" width="248" height="-1"/>
@@ -270,8 +270,13 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="48"/>
+                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="Ninguno (Todos los derechos reservados)"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonNingunoActionPerformed"/>
+              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="401" y="90" width="-1" height="-1"/>
@@ -283,6 +288,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="55"/>
                 <Property name="text" type="java.lang.String" value="Public Domain Work"/>
               </Properties>
               <Constraints>
@@ -296,6 +302,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="56"/>
                 <Property name="text" type="java.lang.String" value="Public Domain Dedication (CC0)"/>
               </Properties>
               <Events>
@@ -312,6 +319,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="49"/>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-No comercial-Compartir bajo la misma licencia de Creative Commons"/>
               </Properties>
               <Constraints>
@@ -325,6 +333,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="50"/>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-No comercial de Creative Commons"/>
               </Properties>
               <Constraints>
@@ -338,6 +347,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="51"/>
                 <Property name="text" type="java.lang.String" value="Creative Commons Atribuci&#xf3;n-No Comercial - No Derivs"/>
               </Properties>
               <Events>
@@ -354,6 +364,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="52"/>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n de Creative Commons"/>
               </Properties>
               <Constraints>
@@ -367,6 +378,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="53"/>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-Compartir bajo la misma licencia de Creative Commons"/>
               </Properties>
               <Constraints>
@@ -380,6 +392,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
+                <Property name="mnemonic" type="int" value="54"/>
                 <Property name="text" type="java.lang.String" value="Atribuci&#xf3;n-No derivadas de Creative Commons"/>
               </Properties>
               <Constraints>
@@ -432,6 +445,7 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupVisibilidad"/>
                 </Property>
+                <Property name="selected" type="boolean" value="true"/>
                 <Property name="text" type="java.lang.String" value="P&#xfa;blica"/>
               </Properties>
               <Events>
@@ -443,6 +457,22 @@
                 </Constraint>
               </Constraints>
             </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                  <AbsoluteConstraints x="650" y="30" width="110" height="40"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="jTextPane1">
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -675,6 +705,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroupSeguridad"/>
                     </Property>
+                    <Property name="mnemonic" type="int" value="49"/>
                     <Property name="text" type="java.lang.String" value="Segura"/>
                   </Properties>
                   <Events>
@@ -702,14 +733,19 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroupTipo"/>
                     </Property>
+                    <Property name="mnemonic" type="int" value="50"/>
                     <Property name="text" type="java.lang.String" value="Captura de Pantalla"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonCapturaActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButtonFoto">
                   <Properties>
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroupTipo"/>
                     </Property>
+                    <Property name="mnemonic" type="int" value="49"/>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Foto"/>
                   </Properties>
@@ -753,6 +789,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroupSeguridad"/>
                     </Property>
+                    <Property name="mnemonic" type="int" value="51"/>
                     <Property name="text" type="java.lang.String" value="Restringida"/>
                   </Properties>
                 </Component>
@@ -778,6 +815,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroupTipo"/>
                     </Property>
+                    <Property name="mnemonic" type="int" value="51"/>
                     <Property name="text" type="java.lang.String" value="Arte/Ilustracci&#xf3;n"/>
                   </Properties>
                 </Component>
@@ -786,6 +824,7 @@
                     <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                       <ComponentRef name="buttonGroupSeguridad"/>
                     </Property>
+                    <Property name="mnemonic" type="int" value="50"/>
                     <Property name="selected" type="boolean" value="true"/>
                     <Property name="text" type="java.lang.String" value="Moderada"/>
                   </Properties>

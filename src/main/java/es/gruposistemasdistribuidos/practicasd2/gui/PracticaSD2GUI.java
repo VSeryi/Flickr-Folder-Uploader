@@ -5,9 +5,11 @@
  */
 package es.gruposistemasdistribuidos.practicasd2.gui;
 
+import com.flickr4java.flickr.FlickrException;
+import com.flickr4java.flickr.RequestContext;
+import es.gruposistemasdistribuidos.practicasd2.src.MetaData;
 import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
 import java.awt.Color;
-import java.awt.Component;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,38 +22,27 @@ import javax.swing.JFileChooser;
 public class PracticaSD2GUI extends javax.swing.JFrame {
 
     private Sesion sesion;
+    private File carpeta;
 
     /**
      * Creates new form practiaSD2GUI
      */
     public PracticaSD2GUI() {
+
         sesion = new Sesion();
+        
         initComponents();
         jLayeredPaneAlbum.setVisible(false);
         jLayeredPaneOpcional.setVisible(false);
         jLayeredPaneGrupos.setVisible(false);
         jPanelSubSubir.setVisible(true);
         /*if (!(sesion.isPermiso())) {
-            for (Component c : jPanelSubSubir.getComponents()) {
-                c.setEnabled(false);
-            }
-        } */
+         for (Component c : jPanelSubSubir.getComponents()) {
+         c.setEnabled(false);
+         }
+         } */
     }
-    public void loading (){
-        
-        for(int i = 0; i< 10; i++){
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            jLabelProgresoN1.setText(Integer.toString(i));
-            
-        }
-        jLayeredPaneProgressBar.setVisible(false);
-        jLayeredPaneAlbum.setVisible(true);
-        
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +88,8 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jLabelVisibilidad = new javax.swing.JLabel();
         jRadioButtonPrivada = new javax.swing.JRadioButton();
         jRadioButtonPublica = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
         jLayeredPaneSubir = new javax.swing.JLayeredPane();
         jPanelSubir = new javax.swing.JPanel();
         jPanelSubSubir = new javax.swing.JPanel();
@@ -212,34 +205,40 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         jLabelAgregarDescripcion.setText("Agregar descripción");
         jPanelOpcional.add(jLabelAgregarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 121, -1, -1));
-
-        jTextFieldAgregarDescripcion.setText("Opcional");
         jPanelOpcional.add(jTextFieldAgregarDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 121, 247, 38));
+        jTextFieldAgregarDescripcion.getAccessibleContext().setAccessibleDescription("Opcional");
 
         jLabelAgregarEtiquetas.setText("Agregar etiquetas");
         jPanelOpcional.add(jLabelAgregarEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 165, -1, -1));
-
-        jTextFieldAgregarEtiquetas.setText("Separar etiquetas con espacios");
         jPanelOpcional.add(jTextFieldAgregarEtiquetas, new org.netbeans.lib.awtextra.AbsoluteConstraints(136, 165, 247, -1));
+        jTextFieldAgregarEtiquetas.getAccessibleContext().setAccessibleDescription("Separar etiquetas con espacios");
 
         jLabelAgregarPersonas.setText("Agregar personas");
         jPanelOpcional.add(jLabelAgregarPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(31, 199, -1, -1));
-
-        jTextFieldAgregarPersonas.setText("Escribir nombre o dirección de correo electrónico");
         jPanelOpcional.add(jTextFieldAgregarPersonas, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 196, 248, -1));
+        jTextFieldAgregarPersonas.getAccessibleContext().setAccessibleDescription("Escribir nombre o dirección de correo electrónico");
 
         jLabel1.setText("Licencias");
         jPanelOpcional.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 70, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonNinguno);
+        jRadioButtonNinguno.setMnemonic('0');
+        jRadioButtonNinguno.setSelected(true);
         jRadioButtonNinguno.setText("Ninguno (Todos los derechos reservados)");
+        jRadioButtonNinguno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonNingunoActionPerformed(evt);
+            }
+        });
         jPanelOpcional.add(jRadioButtonNinguno, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 90, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonPublicDomainWork);
+        jRadioButtonPublicDomainWork.setMnemonic('7');
         jRadioButtonPublicDomainWork.setText("Public Domain Work");
         jPanelOpcional.add(jRadioButtonPublicDomainWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 113, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonPublicDomainDedication);
+        jRadioButtonPublicDomainDedication.setMnemonic('8');
         jRadioButtonPublicDomainDedication.setText("Public Domain Dedication (CC0)");
         jRadioButtonPublicDomainDedication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,14 +248,17 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jPanelOpcional.add(jRadioButtonPublicDomainDedication, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 136, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonNoComercialCompartir);
+        jRadioButtonNoComercialCompartir.setMnemonic('1');
         jRadioButtonNoComercialCompartir.setText("Atribución-No comercial-Compartir bajo la misma licencia de Creative Commons");
         jPanelOpcional.add(jRadioButtonNoComercialCompartir, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 159, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonNoComercialCreative);
+        jRadioButtonNoComercialCreative.setMnemonic('2');
         jRadioButtonNoComercialCreative.setText("Atribución-No comercial de Creative Commons");
         jPanelOpcional.add(jRadioButtonNoComercialCreative, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 182, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonCreativeCommons);
+        jRadioButtonCreativeCommons.setMnemonic('3');
         jRadioButtonCreativeCommons.setText("Creative Commons Atribución-No Comercial - No Derivs");
         jRadioButtonCreativeCommons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,14 +268,17 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jPanelOpcional.add(jRadioButtonCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 208, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonAtribucionCreativeCommons);
+        jRadioButtonAtribucionCreativeCommons.setMnemonic('4');
         jRadioButtonAtribucionCreativeCommons.setText("Atribución de Creative Commons");
         jPanelOpcional.add(jRadioButtonAtribucionCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 231, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonCompartirCreativeCommons);
+        jRadioButtonCompartirCreativeCommons.setMnemonic('5');
         jRadioButtonCompartirCreativeCommons.setText("Atribución-Compartir bajo la misma licencia de Creative Commons");
         jPanelOpcional.add(jRadioButtonCompartirCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 257, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonNoDerivada);
+        jRadioButtonNoDerivada.setMnemonic('6');
         jRadioButtonNoDerivada.setText("Atribución-No derivadas de Creative Commons");
         jPanelOpcional.add(jRadioButtonNoDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 280, -1, -1));
 
@@ -298,6 +303,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jPanelOpcional.add(jRadioButtonPrivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, -1, -1));
 
         buttonGroupVisibilidad.add(jRadioButtonPublica);
+        jRadioButtonPublica.setSelected(true);
         jRadioButtonPublica.setText("Pública");
         jRadioButtonPublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,6 +311,10 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             }
         });
         jPanelOpcional.add(jRadioButtonPublica, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
+
+        jScrollPane1.setViewportView(jTextPane1);
+
+        jPanelOpcional.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, 110, 40));
 
         javax.swing.GroupLayout jLayeredPaneOpcionalLayout = new javax.swing.GroupLayout(jLayeredPaneOpcional);
         jLayeredPaneOpcional.setLayout(jLayeredPaneOpcionalLayout);
@@ -365,6 +375,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jLabelRuta.setText("Ruta no Elegida");
 
         buttonGroupSeguridad.add(jRadioButtonSegura);
+        jRadioButtonSegura.setMnemonic('1');
         jRadioButtonSegura.setText("Segura");
         jRadioButtonSegura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,9 +394,16 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         });
 
         buttonGroupTipo.add(jRadioButtonCaptura);
+        jRadioButtonCaptura.setMnemonic('2');
         jRadioButtonCaptura.setText("Captura de Pantalla");
+        jRadioButtonCaptura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonCapturaActionPerformed(evt);
+            }
+        });
 
         buttonGroupTipo.add(jRadioButtonFoto);
+        jRadioButtonFoto.setMnemonic('1');
         jRadioButtonFoto.setSelected(true);
         jRadioButtonFoto.setText("Foto");
         jRadioButtonFoto.addActionListener(new java.awt.event.ActionListener() {
@@ -415,6 +433,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jLabelPrivacidad.setText("Privacidad");
 
         buttonGroupSeguridad.add(jRadioButtonRestringida);
+        jRadioButtonRestringida.setMnemonic('3');
         jRadioButtonRestringida.setText("Restringida");
 
         jLabelTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -429,9 +448,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         });
 
         buttonGroupTipo.add(jRadioButtonArte);
+        jRadioButtonArte.setMnemonic('3');
         jRadioButtonArte.setText("Arte/Ilustracción");
 
         buttonGroupSeguridad.add(jRadioButtonModerada);
+        jRadioButtonModerada.setMnemonic('2');
         jRadioButtonModerada.setSelected(true);
         jRadioButtonModerada.setText("Moderada");
 
@@ -906,8 +927,8 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private void jButtonElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElegirActionPerformed
         int returnVal = fileChooserCarpetas.showOpenDialog(jPanelSubir);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooserCarpetas.getSelectedFile();
-            jLabelRuta.setText(file.getAbsolutePath());
+            carpeta = fileChooserCarpetas.getSelectedFile();
+            jLabelRuta.setText(carpeta.getAbsolutePath());
         } else {
 
         }
@@ -922,10 +943,52 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonSeguraActionPerformed
 
     private void jButtonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirActionPerformed
-        jLayeredPaneSubir.setVisible(false);
-        jLayeredPaneProgressBar.setVisible(true);
-        loading();
-        
+       // jLayeredPaneSubir.setVisible(false);
+        // jLayeredPaneProgressBar.setVisible(true);
+
+        String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getMnemonic());
+        String tipoContenido = String.valueOf(buttonGroupTipo.getSelection().getMnemonic());
+        int privacidad;
+        if (jRadioButtonPrivado.isSelected()) {
+            privacidad = 5;
+        } else {
+            privacidad = 1;
+            if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
+                privacidad = 4;
+            } else if (jCheckBoxFamiliares.isSelected()) {
+                privacidad = 3;
+            } else if (jCheckBoxAmigos.isSelected()) {
+                privacidad = 2;
+            }
+        }
+        MetaData metaData = new MetaData(carpeta, seguridad, tipoContenido, privacidad);
+        if (!jTextFieldAgregarTitulo.getText().isEmpty()) {
+            metaData.setTitulo(jTextFieldAgregarTitulo.getText());
+        }
+        if (!jTextFieldAgregarDescripcion.getText().isEmpty()) {
+            metaData.setDescripcion(jTextFieldAgregarDescripcion.getText());
+        }
+        if (!jTextFieldAgregarEtiquetas.getText().isEmpty()) {
+            String[] etiquetas = jTextFieldAgregarEtiquetas.getText().split(" ");
+            for (String s : etiquetas) {
+                metaData.getEtiquetas().add(s);
+            }
+        }
+        if (!jTextFieldAgregarPersonas.getText().isEmpty()) {
+            String[] personas = jTextFieldAgregarPersonas.getText().split(" ");
+            for (String s : personas) {
+                metaData.getPersonas().add(s);
+            }
+        }
+
+        metaData.setLicencia(buttonGroupLicencia.getSelection().getMnemonic());
+
+        try {
+            sesion.uploadFolder(metaData);
+        } catch (FlickrException ex) {
+            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }//GEN-LAST:event_jButtonSubirActionPerformed
 
     private void jRadioButtonSiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiAlbumActionPerformed
@@ -995,10 +1058,10 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         } else {
             if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
                 jLabelPrivacidadElegida.setText("Visible para tus amigos.");
-            } else if(jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
+            } else if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
                 jLabelPrivacidadElegida.setText("Visible para tus familiares.");
-                
-            }else{
+
+            } else {
                 jRadioButtonPrivadoActionPerformed(null);
             }
         }
@@ -1011,10 +1074,10 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         } else {
             if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
                 jLabelPrivacidadElegida.setText("Visible para tus familiares.");
-            } else if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()){               
+            } else if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
                 jLabelPrivacidadElegida.setText("Visible para tus amigos.");
-            }else{
-                 jRadioButtonPrivadoActionPerformed(null);
+            } else {
+                jRadioButtonPrivadoActionPerformed(null);
             }
         }
     }//GEN-LAST:event_jCheckBoxFamiliaresActionPerformed
@@ -1030,6 +1093,14 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private void jRadioButtonNoGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoGruposActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonNoGruposActionPerformed
+
+    private void jRadioButtonCapturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCapturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonCapturaActionPerformed
+
+    private void jRadioButtonNingunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNingunoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonNingunoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1062,7 +1133,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1157,6 +1228,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonSegura;
     private javax.swing.JRadioButton jRadioButtonSiAlbum;
     private javax.swing.JRadioButton jRadioButtonSiGrupos;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneDescripcionAlbum;
     private javax.swing.JScrollPane jScrollPaneGrupos;
     private javax.swing.JTextArea jTextAreaDescripcionAlbum;
@@ -1165,6 +1237,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldAgregarPersonas;
     private javax.swing.JTextField jTextFieldAgregarTitulo;
     private javax.swing.JTextField jTextFieldTituloAlbum;
+    private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
 }
