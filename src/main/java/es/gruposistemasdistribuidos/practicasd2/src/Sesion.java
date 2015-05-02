@@ -16,6 +16,8 @@ import com.flickr4java.flickr.people.User;
 import com.flickr4java.flickr.photos.licenses.LicensesInterface;
 import com.flickr4java.flickr.photos.upload.Ticket;
 import com.flickr4java.flickr.photos.upload.UploadInterface;
+import com.flickr4java.flickr.photosets.Photoset;
+import com.flickr4java.flickr.photosets.PhotosetsInterface;
 import com.flickr4java.flickr.uploader.UploadMetaData;
 import com.flickr4java.flickr.uploader.Uploader;
 import es.gruposistemasdistribuidos.practicasd2.auth.AutorizacionesFlickr;
@@ -169,5 +171,12 @@ public class Sesion {
 
         
     }
-
+    public void createAlbum(String title, String decription) throws FlickrException{
+       PhotosetsInterface photoSeters = miFlickr.getPhotosetsInterface();
+       Photoset photoSet = photoSeters.create(title, decription, fotosSubidas.get(0));
+       if(fotosSubidas.size() > 1)
+           for (int i = 1; i < fotosSubidas.size(); i++) {
+               photoSeters.addPhoto(photoSet.getId(), fotosSubidas.get(i));
+           }
+    }
 }

@@ -7,6 +7,7 @@ package es.gruposistemasdistribuidos.practicasd2.gui;
 
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.RequestContext;
+import com.flickr4java.flickr.groups.Group;
 import es.gruposistemasdistribuidos.practicasd2.src.MetaData;
 import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
 import java.awt.Color;
@@ -14,7 +15,11 @@ import java.awt.Component;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -816,6 +821,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         });
 
         buttonGroupGrupos.add(jRadioButtonNoGrupos);
+        jRadioButtonNoGrupos.setSelected(true);
         jRadioButtonNoGrupos.setText("No");
         jRadioButtonNoGrupos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -823,7 +829,9 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             }
         });
 
+        jListGrupos.setModel(new DefaultListModel ());
         jListGrupos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jListGrupos.setEnabled(false);
         jScrollPaneGrupos.setViewportView(jListGrupos);
 
         jButtonContinuarGrupos.setText("Continuar");
@@ -1044,12 +1052,15 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         }
 
         jLayeredPaneSubir.setVisible(false);
-        if(metaData.getTipoContenido().equals("1")){
-                    jLabelTipoContenidoAlbum.setText("Fotos");
-        }else if(metaData.getTipoContenido().equals("2")){
+        if (metaData.getTipoContenido().equals("1")) {
+            jLabelTipoContenidoAlbum.setText("Fotos");
+            jLabelTipoContenidoGrupos.setText("Fotos");
+        } else if (metaData.getTipoContenido().equals("2")) {
             jLabelTipoContenidoAlbum.setText("Capturas de Pantalla");
-        }else{
+            jLabelTipoContenidoGrupos.setText("Capturas de Pantalla");
+        } else {
             jLabelTipoContenidoAlbum.setText("Arte/Ilustraciones");
+            jLabelTipoContenidoGrupos.setText("Arte/Ilustraciones");
         }
         jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
         jLayeredPaneAlbum.setVisible(true);
@@ -1144,11 +1155,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxAmigosPropertyChange
 
     private void jRadioButtonSiGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiGruposActionPerformed
-        // TODO add your handling code here:
+        jListGrupos.setEnabled(true);
     }//GEN-LAST:event_jRadioButtonSiGruposActionPerformed
 
     private void jRadioButtonNoGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoGruposActionPerformed
-        // TODO add your handling code here:
+        jListGrupos.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonNoGruposActionPerformed
 
     private void jRadioButtonCapturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCapturaActionPerformed
@@ -1164,7 +1175,34 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFinalizarAlbumActionPerformed
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
-        // TODO add your handling code here:
+        if (jRadioButtonSiAlbum.isSelected()) {
+            try {
+                sesion.createAlbum(jTextFieldTituloAlbum.getText(), jTextAreaDescripcionAlbum.getText());
+            } catch (FlickrException ex) {
+                Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jLayeredPaneAlbum.setVisible(false);
+        DefaultListModel model = (DefaultListModel) jListGrupos.getModel();
+        jListGrupos.setCellRenderer(new DefaultListCellRenderer() {
+
+            @Override
+            public Component getListCellRendererComponent(JList jlist, Object e, int i, boolean bln, boolean bln1) {
+                Component c = super.getListCellRendererComponent(jlist, e, i, bln, bln1);
+                setText(((Group) e).getName());
+                return c;
+            }
+        });
+        try {
+            for (Group g : sesion.getMiFlickr().getPoolsInterface().getGroups()) {
+                model.addElement(g);
+            }
+        } catch (FlickrException ex) {
+            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jListGrupos.repaint();
+        jLayeredPaneGrupos.setVisible(true);
+
     }//GEN-LAST:event_jButtonContinuarActionPerformed
 
     private void jRadioButtonSiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiAlbumActionPerformed
