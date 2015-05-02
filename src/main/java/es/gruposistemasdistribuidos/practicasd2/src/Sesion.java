@@ -167,9 +167,7 @@ public class Sesion {
 
         }
 
-        if (!metaData.getPersonas().isEmpty()) {
-            // ...
-        }
+        
     }
 
 }

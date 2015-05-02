@@ -10,6 +10,7 @@ import com.flickr4java.flickr.RequestContext;
 import es.gruposistemasdistribuidos.practicasd2.src.MetaData;
 import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
 import java.awt.Color;
+import java.awt.Component;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,14 +113,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jRadioButtonModerada = new javax.swing.JRadioButton();
         jButtonElegir = new javax.swing.JButton();
         jLabelTitulo = new javax.swing.JLabel();
-        jLayeredPaneProgressBar = new javax.swing.JLayeredPane();
-        jPanelProgressBar = new javax.swing.JPanel();
-        jProgressBarSubiendo = new javax.swing.JProgressBar();
-        jLabelProgreso = new javax.swing.JLabel();
-        jLabelProgresoN1 = new javax.swing.JLabel();
-        jLabelProgreso2 = new javax.swing.JLabel();
-        jLabelProgresoN2 = new javax.swing.JLabel();
-        jLabelProgreso3 = new javax.swing.JLabel();
         jLayeredPaneAlbum = new javax.swing.JLayeredPane();
         jPanelAlbum = new javax.swing.JPanel();
         jLabelTituloAlbum = new javax.swing.JLabel();
@@ -128,12 +121,14 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jLabelPreguntaAlbum2 = new javax.swing.JLabel();
         jRadioButtonSiAlbum = new javax.swing.JRadioButton();
         jRadioButtonNoAlbum = new javax.swing.JRadioButton();
-        jLabelNombreAlbum = new javax.swing.JLabel();
+        jButtonContinuar = new javax.swing.JButton();
+        jButtonFinalizarAlbum = new javax.swing.JButton();
+        jPanelSubAlbum = new javax.swing.JPanel();
         jTextFieldTituloAlbum = new javax.swing.JTextField();
-        jLabelDescripcionAlbum = new javax.swing.JLabel();
         jScrollPaneDescripcionAlbum = new javax.swing.JScrollPane();
         jTextAreaDescripcionAlbum = new javax.swing.JTextArea();
-        jButtonContinuar = new javax.swing.JButton();
+        jLabelDescripcionAlbum = new javax.swing.JLabel();
+        jLabelNombreAlbum = new javax.swing.JLabel();
         jLayeredPaneGrupos = new javax.swing.JLayeredPane();
         jPanelGrupos = new javax.swing.JPanel();
         jLabelTituloGrupos = new javax.swing.JLabel();
@@ -145,6 +140,14 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jScrollPaneGrupos = new javax.swing.JScrollPane();
         jListGrupos = new javax.swing.JList();
         jButtonContinuarGrupos = new javax.swing.JButton();
+        jLayeredPaneProgressBar = new javax.swing.JLayeredPane();
+        jPanelProgressBar = new javax.swing.JPanel();
+        jProgressBarSubiendo = new javax.swing.JProgressBar();
+        jLabelProgreso = new javax.swing.JLabel();
+        jLabelProgresoN1 = new javax.swing.JLabel();
+        jLabelProgreso2 = new javax.swing.JLabel();
+        jLabelProgresoN2 = new javax.swing.JLabel();
+        jLabelProgreso3 = new javax.swing.JLabel();
 
         fileChooserCarpetas.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
         fileChooserCarpetas.setMinimumSize(new java.awt.Dimension(644, 419));
@@ -602,83 +605,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         getContentPane().add(jLayeredPaneSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jLayeredPaneProgressBar.setAlignmentX(0.0F);
-        jLayeredPaneProgressBar.setAlignmentY(0.0F);
-        jLayeredPaneProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
-        jLayeredPaneProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
-        jLayeredPaneProgressBar.setOpaque(true);
-
-        jPanelProgressBar.setAlignmentX(0.0F);
-        jPanelProgressBar.setAlignmentY(0.0F);
-        jPanelProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
-        jPanelProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
-        jPanelProgressBar.setPreferredSize(new java.awt.Dimension(800, 330));
-
-        jLabelProgreso.setText("Progreso: ");
-
-        jLabelProgresoN1.setText("n1");
-
-        jLabelProgreso2.setText("ficheros subidos, ");
-
-        jLabelProgresoN2.setText("n2");
-
-        jLabelProgreso3.setText("pendientes");
-
-        javax.swing.GroupLayout jPanelProgressBarLayout = new javax.swing.GroupLayout(jPanelProgressBar);
-        jPanelProgressBar.setLayout(jPanelProgressBarLayout);
-        jPanelProgressBarLayout.setHorizontalGroup(
-            jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelProgressBarLayout.createSequentialGroup()
-                .addGroup(jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelProgressBarLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jProgressBarSubiendo, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelProgressBarLayout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabelProgreso)
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabelProgresoN1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelProgreso2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelProgresoN2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelProgreso3)))
-                .addContainerGap(91, Short.MAX_VALUE))
-        );
-        jPanelProgressBarLayout.setVerticalGroup(
-            jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelProgressBarLayout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jProgressBarSubiendo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelProgreso)
-                    .addComponent(jLabelProgresoN1)
-                    .addComponent(jLabelProgreso2)
-                    .addComponent(jLabelProgresoN2)
-                    .addComponent(jLabelProgreso3))
-                .addContainerGap(150, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jLayeredPaneProgressBarLayout = new javax.swing.GroupLayout(jLayeredPaneProgressBar);
-        jLayeredPaneProgressBar.setLayout(jLayeredPaneProgressBarLayout);
-        jLayeredPaneProgressBarLayout.setHorizontalGroup(
-            jLayeredPaneProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneProgressBarLayout.createSequentialGroup()
-                .addComponent(jPanelProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jLayeredPaneProgressBarLayout.setVerticalGroup(
-            jLayeredPaneProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jLayeredPaneProgressBarLayout.createSequentialGroup()
-                .addComponent(jPanelProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jLayeredPaneProgressBar.setLayer(jPanelProgressBar, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        getContentPane().add(jLayeredPaneProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jLayeredPaneAlbum.setAlignmentX(0.0F);
         jLayeredPaneAlbum.setAlignmentY(0.0F);
         jLayeredPaneAlbum.setAutoscrolls(true);
@@ -713,17 +639,13 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         });
 
         buttonGroupAlbum.add(jRadioButtonNoAlbum);
+        jRadioButtonNoAlbum.setSelected(true);
         jRadioButtonNoAlbum.setText("No");
-
-        jLabelNombreAlbum.setText("Título del Album:");
-
-        jTextFieldTituloAlbum.setText("carpetaSeleccionada");
-
-        jLabelDescripcionAlbum.setText("Descripción del Album:");
-
-        jTextAreaDescripcionAlbum.setColumns(20);
-        jTextAreaDescripcionAlbum.setRows(5);
-        jScrollPaneDescripcionAlbum.setViewportView(jTextAreaDescripcionAlbum);
+        jRadioButtonNoAlbum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonNoAlbumActionPerformed(evt);
+            }
+        });
 
         jButtonContinuar.setText("Continuar");
         jButtonContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -732,46 +654,93 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             }
         });
 
+        jButtonFinalizarAlbum.setText("Finalizar");
+        jButtonFinalizarAlbum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFinalizarAlbumActionPerformed(evt);
+            }
+        });
+
+        jTextFieldTituloAlbum.setText("carpetaSeleccionada");
+        jTextFieldTituloAlbum.setEnabled(false);
+
+        jScrollPaneDescripcionAlbum.setEnabled(false);
+
+        jTextAreaDescripcionAlbum.setColumns(20);
+        jTextAreaDescripcionAlbum.setRows(5);
+        jTextAreaDescripcionAlbum.setEnabled(false);
+        jScrollPaneDescripcionAlbum.setViewportView(jTextAreaDescripcionAlbum);
+        jTextAreaDescripcionAlbum.getAccessibleContext().setAccessibleParent(jPanelSubAlbum);
+
+        jLabelDescripcionAlbum.setText("Descripción del Album:");
+        jLabelDescripcionAlbum.setEnabled(false);
+
+        jLabelNombreAlbum.setText("Título del Album:");
+        jLabelNombreAlbum.setEnabled(false);
+
+        javax.swing.GroupLayout jPanelSubAlbumLayout = new javax.swing.GroupLayout(jPanelSubAlbum);
+        jPanelSubAlbum.setLayout(jPanelSubAlbumLayout);
+        jPanelSubAlbumLayout.setHorizontalGroup(
+            jPanelSubAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelSubAlbumLayout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addGroup(jPanelSubAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelDescripcionAlbum)
+                    .addComponent(jLabelNombreAlbum))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelSubAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextFieldTituloAlbum)
+                    .addComponent(jScrollPaneDescripcionAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanelSubAlbumLayout.setVerticalGroup(
+            jPanelSubAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelSubAlbumLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanelSubAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelNombreAlbum)
+                    .addComponent(jTextFieldTituloAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanelSubAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelSubAlbumLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPaneDescripcionAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelSubAlbumLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabelDescripcionAlbum)))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanelAlbumLayout = new javax.swing.GroupLayout(jPanelAlbum);
         jPanelAlbum.setLayout(jPanelAlbumLayout);
         jPanelAlbumLayout.setHorizontalGroup(
             jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
-                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAlbumLayout.createSequentialGroup()
-                        .addGap(315, 315, 315)
-                        .addComponent(jRadioButtonSiAlbum)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jRadioButtonNoAlbum))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelAlbumLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabelTituloAlbum)))
-                .addGap(24, 196, Short.MAX_VALUE))
             .addGroup(jPanelAlbumLayout.createSequentialGroup()
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                        .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                                .addGap(241, 241, 241)
-                                .addComponent(jLabelPreguntaAlbum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelTipoContenidoAlbum)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelPreguntaAlbum2))
-                            .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                                .addGap(172, 172, 172)
-                                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabelDescripcionAlbum)
-                                    .addComponent(jLabelNombreAlbum))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextFieldTituloAlbum)
-                                    .addComponent(jScrollPaneDescripcionAlbum, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap()
+                        .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addComponent(jButtonFinalizarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                        .addGap(241, 241, 241)
+                        .addComponent(jLabelPreguntaAlbum)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTipoContenidoAlbum)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelPreguntaAlbum2))
+                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabelTituloAlbum)))
+                .addGap(11, 11, 11))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlbumLayout.createSequentialGroup()
+                .addComponent(jPanelSubAlbum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanelAlbumLayout.createSequentialGroup()
+                .addGap(345, 345, 345)
+                .addComponent(jRadioButtonSiAlbum)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jRadioButtonNoAlbum)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAlbumLayout.setVerticalGroup(
             jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -788,18 +757,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     .addComponent(jRadioButtonSiAlbum)
                     .addComponent(jRadioButtonNoAlbum))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelSubAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
                 .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombreAlbum)
-                    .addComponent(jTextFieldTituloAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanelAlbumLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPaneDescripcionAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelAlbumLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabelDescripcionAlbum)))
-                .addGap(18, 18, 18)
-                .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                    .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                    .addComponent(jButtonFinalizarAlbum, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -936,6 +898,83 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         getContentPane().add(jLayeredPaneGrupos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jLayeredPaneProgressBar.setAlignmentX(0.0F);
+        jLayeredPaneProgressBar.setAlignmentY(0.0F);
+        jLayeredPaneProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
+        jLayeredPaneProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
+        jLayeredPaneProgressBar.setOpaque(true);
+
+        jPanelProgressBar.setAlignmentX(0.0F);
+        jPanelProgressBar.setAlignmentY(0.0F);
+        jPanelProgressBar.setMaximumSize(new java.awt.Dimension(800, 330));
+        jPanelProgressBar.setMinimumSize(new java.awt.Dimension(800, 330));
+        jPanelProgressBar.setPreferredSize(new java.awt.Dimension(800, 330));
+
+        jLabelProgreso.setText("Progreso: ");
+
+        jLabelProgresoN1.setText("n1");
+
+        jLabelProgreso2.setText("ficheros subidos, ");
+
+        jLabelProgresoN2.setText("n2");
+
+        jLabelProgreso3.setText("pendientes");
+
+        javax.swing.GroupLayout jPanelProgressBarLayout = new javax.swing.GroupLayout(jPanelProgressBar);
+        jPanelProgressBar.setLayout(jPanelProgressBarLayout);
+        jPanelProgressBarLayout.setHorizontalGroup(
+            jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                .addGroup(jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jProgressBarSubiendo, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(jLabelProgreso)
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabelProgresoN1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelProgreso2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelProgresoN2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelProgreso3)))
+                .addContainerGap(91, Short.MAX_VALUE))
+        );
+        jPanelProgressBarLayout.setVerticalGroup(
+            jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelProgressBarLayout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addComponent(jProgressBarSubiendo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelProgreso)
+                    .addComponent(jLabelProgresoN1)
+                    .addComponent(jLabelProgreso2)
+                    .addComponent(jLabelProgresoN2)
+                    .addComponent(jLabelProgreso3))
+                .addContainerGap(150, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jLayeredPaneProgressBarLayout = new javax.swing.GroupLayout(jLayeredPaneProgressBar);
+        jLayeredPaneProgressBar.setLayout(jLayeredPaneProgressBarLayout);
+        jLayeredPaneProgressBarLayout.setHorizontalGroup(
+            jLayeredPaneProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneProgressBarLayout.createSequentialGroup()
+                .addComponent(jPanelProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPaneProgressBarLayout.setVerticalGroup(
+            jLayeredPaneProgressBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPaneProgressBarLayout.createSequentialGroup()
+                .addComponent(jPanelProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jLayeredPaneProgressBar.setLayer(jPanelProgressBar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        getContentPane().add(jLayeredPaneProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1004,15 +1043,18 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        jLayeredPaneSubir.setVisible(false);
+        if(metaData.getTipoContenido().equals("1")){
+                    jLabelTipoContenidoAlbum.setText("Fotos");
+        }else if(metaData.getTipoContenido().equals("2")){
+            jLabelTipoContenidoAlbum.setText("Capturas de Pantalla");
+        }else{
+            jLabelTipoContenidoAlbum.setText("Arte/Ilustraciones");
+        }
+        jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
+        jLayeredPaneAlbum.setVisible(true);
+
     }//GEN-LAST:event_jButtonSubirActionPerformed
-
-    private void jRadioButtonSiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiAlbumActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonSiAlbumActionPerformed
-
-    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonContinuarActionPerformed
 
     private void jTextFieldAgregarTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAgregarTituloActionPerformed
         // TODO add your handling code here:
@@ -1117,6 +1159,28 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonNingunoActionPerformed
 
+    private void jButtonFinalizarAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarAlbumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonFinalizarAlbumActionPerformed
+
+    private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonContinuarActionPerformed
+
+    private void jRadioButtonSiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiAlbumActionPerformed
+        for (Component c : jPanelSubAlbum.getComponents()) {
+            c.setEnabled(true);
+            jTextAreaDescripcionAlbum.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRadioButtonSiAlbumActionPerformed
+
+    private void jRadioButtonNoAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoAlbumActionPerformed
+        for (Component c : jPanelSubAlbum.getComponents()) {
+            c.setEnabled(false);
+            jTextAreaDescripcionAlbum.setEnabled(false);
+        }
+    }//GEN-LAST:event_jRadioButtonNoAlbumActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1171,6 +1235,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButtonContinuar;
     private javax.swing.JButton jButtonContinuarGrupos;
     private javax.swing.JButton jButtonElegir;
+    private javax.swing.JButton jButtonFinalizarAlbum;
     private javax.swing.JButton jButtonOpcionales;
     private javax.swing.JButton jButtonSubir;
     private javax.swing.JButton jButtonVolver;
@@ -1217,6 +1282,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelGrupos;
     private javax.swing.JPanel jPanelOpcional;
     private javax.swing.JPanel jPanelProgressBar;
+    private javax.swing.JPanel jPanelSubAlbum;
     private javax.swing.JPanel jPanelSubSubir;
     private javax.swing.JPanel jPanelSubir;
     private javax.swing.JProgressBar jProgressBarSubiendo;
