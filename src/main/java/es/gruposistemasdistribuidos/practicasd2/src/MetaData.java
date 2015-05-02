@@ -18,11 +18,11 @@ public class MetaData {
     //Atributos obligatorios
     private File carpeta;
     private String seguridad, tipoContenido;
-    private int privacidad;
+    private int privacidad= -1;
     //Atributos opcionales
     private String titulo, descripcion;
-    private int visibilidad;
-    private int licencia;
+    private int visibilidad = -1;
+    private int licencia= -1;
     private Collection <String> etiquetas, personas; //Dudas?
     
     //Constructor

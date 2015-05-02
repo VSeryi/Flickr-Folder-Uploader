@@ -20,7 +20,6 @@ import com.flickr4java.flickr.uploader.UploadMetaData;
 import com.flickr4java.flickr.uploader.Uploader;
 import es.gruposistemasdistribuidos.practicasd2.auth.AutorizacionesFlickr;
 import java.io.File;
-import java.util.AbstractSet;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -114,13 +113,13 @@ public class Sesion {
         RequestContext.getRequestContext().setAuth(miFlickr.getAuth());
         Uploader uploader = miFlickr.getUploader();
         LicensesInterface licenser = miFlickr.getLicensesInterface();
-        PeopleInterface peopler = miFlickr.getPeopleInterface();       
+        PeopleInterface peopler = miFlickr.getPeopleInterface();
 
         Set<String> tickets = new HashSet<String>();
         for (File f : metaData.getCarpeta().listFiles()) {
             if (f.isFile()) {
                 try {
-                    String ticketName = uploader.upload(f, metaDataFlickr);                    
+                    String ticketName = uploader.upload(f, metaDataFlickr);
                     tickets.add(ticketName);
                 } catch (FlickrException ex) {
                     Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,10 +128,13 @@ public class Sesion {
         }
         UploadInterface inter = miFlickr.getUploadInterface();
         boolean completada = false;
-        while(!completada){
-            boolean estaCompletada=true;
+        while (!completada) {
+            boolean estaCompletada = true;
+            System.out.println(tickets.size());
             for (Ticket t : inter.checkTickets(tickets)) {
-                estaCompletada = estaCompletada && (t.getStatus() == 1);
+                System.out.println(t.getTicketId() + t.getStatus());
+                System.out.println(t.getTicketId() + t.hasCompleted());
+                estaCompletada = estaCompletada && (t.getStatus() > 0);
             }
             completada = estaCompletada;
         }
@@ -140,7 +142,10 @@ public class Sesion {
             String fotoId = t.getPhotoId();
             fotosSubidas.add(fotoId);
             try {
-                licenser.setLicense(fotoId, metaData.getLicencia());
+                if (metaData.getLicencia() != -1) {
+                    System.out.println("LA LICENSIA ES "+ metaData.getLicencia());
+                    licenser.setLicense(fotoId, metaData.getLicencia());
+                }
             } catch (FlickrException ex) {
                 Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -30,7 +30,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     public PracticaSD2GUI() {
 
         sesion = new Sesion();
-        
+
         initComponents();
         jLayeredPaneAlbum.setVisible(false);
         jLayeredPaneOpcional.setVisible(false);
@@ -225,6 +225,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jRadioButtonNinguno.setMnemonic('0');
         jRadioButtonNinguno.setSelected(true);
         jRadioButtonNinguno.setText("Ninguno (Todos los derechos reservados)");
+        jRadioButtonNinguno.setActionCommand("0");
         jRadioButtonNinguno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonNingunoActionPerformed(evt);
@@ -235,11 +236,13 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupLicencia.add(jRadioButtonPublicDomainWork);
         jRadioButtonPublicDomainWork.setMnemonic('7');
         jRadioButtonPublicDomainWork.setText("Public Domain Work");
+        jRadioButtonPublicDomainWork.setActionCommand("7");
         jPanelOpcional.add(jRadioButtonPublicDomainWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 113, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonPublicDomainDedication);
         jRadioButtonPublicDomainDedication.setMnemonic('8');
         jRadioButtonPublicDomainDedication.setText("Public Domain Dedication (CC0)");
+        jRadioButtonPublicDomainDedication.setActionCommand("8");
         jRadioButtonPublicDomainDedication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonPublicDomainDedicationActionPerformed(evt);
@@ -250,16 +253,19 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupLicencia.add(jRadioButtonNoComercialCompartir);
         jRadioButtonNoComercialCompartir.setMnemonic('1');
         jRadioButtonNoComercialCompartir.setText("Atribución-No comercial-Compartir bajo la misma licencia de Creative Commons");
+        jRadioButtonNoComercialCompartir.setActionCommand("1");
         jPanelOpcional.add(jRadioButtonNoComercialCompartir, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 159, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonNoComercialCreative);
         jRadioButtonNoComercialCreative.setMnemonic('2');
         jRadioButtonNoComercialCreative.setText("Atribución-No comercial de Creative Commons");
+        jRadioButtonNoComercialCreative.setActionCommand("2");
         jPanelOpcional.add(jRadioButtonNoComercialCreative, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 182, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonCreativeCommons);
         jRadioButtonCreativeCommons.setMnemonic('3');
         jRadioButtonCreativeCommons.setText("Creative Commons Atribución-No Comercial - No Derivs");
+        jRadioButtonCreativeCommons.setActionCommand("3");
         jRadioButtonCreativeCommons.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonCreativeCommonsActionPerformed(evt);
@@ -270,16 +276,19 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupLicencia.add(jRadioButtonAtribucionCreativeCommons);
         jRadioButtonAtribucionCreativeCommons.setMnemonic('4');
         jRadioButtonAtribucionCreativeCommons.setText("Atribución de Creative Commons");
+        jRadioButtonAtribucionCreativeCommons.setActionCommand("4");
         jPanelOpcional.add(jRadioButtonAtribucionCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 231, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonCompartirCreativeCommons);
         jRadioButtonCompartirCreativeCommons.setMnemonic('5');
         jRadioButtonCompartirCreativeCommons.setText("Atribución-Compartir bajo la misma licencia de Creative Commons");
+        jRadioButtonCompartirCreativeCommons.setActionCommand("5");
         jPanelOpcional.add(jRadioButtonCompartirCreativeCommons, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 257, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonNoDerivada);
         jRadioButtonNoDerivada.setMnemonic('6');
         jRadioButtonNoDerivada.setText("Atribución-No derivadas de Creative Commons");
+        jRadioButtonNoDerivada.setActionCommand("6");
         jPanelOpcional.add(jRadioButtonNoDerivada, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 280, -1, -1));
 
         jButtonVolver.setText("Volver");
@@ -377,6 +386,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupSeguridad.add(jRadioButtonSegura);
         jRadioButtonSegura.setMnemonic('1');
         jRadioButtonSegura.setText("Segura");
+        jRadioButtonSegura.setActionCommand("1");
         jRadioButtonSegura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonSeguraActionPerformed(evt);
@@ -396,6 +406,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupTipo.add(jRadioButtonCaptura);
         jRadioButtonCaptura.setMnemonic('2');
         jRadioButtonCaptura.setText("Captura de Pantalla");
+        jRadioButtonCaptura.setActionCommand("2");
         jRadioButtonCaptura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonCapturaActionPerformed(evt);
@@ -406,6 +417,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jRadioButtonFoto.setMnemonic('1');
         jRadioButtonFoto.setSelected(true);
         jRadioButtonFoto.setText("Foto");
+        jRadioButtonFoto.setActionCommand("1");
         jRadioButtonFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonFotoActionPerformed(evt);
@@ -435,6 +447,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupSeguridad.add(jRadioButtonRestringida);
         jRadioButtonRestringida.setMnemonic('3');
         jRadioButtonRestringida.setText("Restringida");
+        jRadioButtonRestringida.setActionCommand("3");
 
         jLabelTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabelTipo.setText("Tipo de Contenido");
@@ -450,11 +463,13 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         buttonGroupTipo.add(jRadioButtonArte);
         jRadioButtonArte.setMnemonic('3');
         jRadioButtonArte.setText("Arte/Ilustracción");
+        jRadioButtonArte.setActionCommand("3");
 
         buttonGroupSeguridad.add(jRadioButtonModerada);
         jRadioButtonModerada.setMnemonic('2');
         jRadioButtonModerada.setSelected(true);
         jRadioButtonModerada.setText("Moderada");
+        jRadioButtonModerada.setActionCommand("2");
 
         jButtonElegir.setText("Elegir Carpeta a Subir");
         jButtonElegir.addActionListener(new java.awt.event.ActionListener() {
@@ -943,11 +958,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonSeguraActionPerformed
 
     private void jButtonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirActionPerformed
-       // jLayeredPaneSubir.setVisible(false);
+        // jLayeredPaneSubir.setVisible(false);
         // jLayeredPaneProgressBar.setVisible(true);
 
-        String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getMnemonic());
-        String tipoContenido = String.valueOf(buttonGroupTipo.getSelection().getMnemonic());
+        String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getActionCommand());
+        String tipoContenido = String.valueOf(buttonGroupTipo.getSelection().getActionCommand());
         int privacidad;
         if (jRadioButtonPrivado.isSelected()) {
             privacidad = 5;
@@ -981,7 +996,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             }
         }
 
-        metaData.setLicencia(buttonGroupLicencia.getSelection().getMnemonic());
+        metaData.setLicencia(Integer.valueOf(buttonGroupLicencia.getSelection().getActionCommand()));
 
         try {
             sesion.uploadFolder(metaData);
