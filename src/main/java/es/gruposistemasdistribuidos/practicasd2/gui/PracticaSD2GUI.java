@@ -643,7 +643,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     .addComponent(jLabelProgreso2)
                     .addComponent(jLabelProgresoN2)
                     .addComponent(jLabelProgreso3))
-                .addContainerGap(148, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jLayeredPaneProgressBarLayout = new javax.swing.GroupLayout(jLayeredPaneProgressBar);
@@ -784,7 +784,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabelDescripcionAlbum)))
                 .addGap(18, 18, 18)
-                .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addComponent(jButtonContinuar, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -899,7 +899,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonContinuarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addComponent(jButtonContinuarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
