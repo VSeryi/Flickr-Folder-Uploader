@@ -144,7 +144,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jRadioButtonNoGrupos = new javax.swing.JRadioButton();
         jScrollPaneGrupos = new javax.swing.JScrollPane();
         jListGrupos = new javax.swing.JList();
-        jButtonContinuarGrupos = new javax.swing.JButton();
+        jButtonFinalizarGrupos = new javax.swing.JButton();
         jLayeredPaneProgressBar = new javax.swing.JLayeredPane();
         jPanelProgressBar = new javax.swing.JPanel();
         jProgressBarSubiendo = new javax.swing.JProgressBar();
@@ -834,7 +834,12 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jListGrupos.setEnabled(false);
         jScrollPaneGrupos.setViewportView(jListGrupos);
 
-        jButtonContinuarGrupos.setText("Continuar");
+        jButtonFinalizarGrupos.setText("Finalizar");
+        jButtonFinalizarGrupos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFinalizarGruposActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelGruposLayout = new javax.swing.GroupLayout(jPanelGrupos);
         jPanelGrupos.setLayout(jPanelGruposLayout);
@@ -850,7 +855,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addGroup(jPanelGruposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelGruposLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButtonContinuarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanelGruposLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPaneGrupos))
@@ -884,7 +889,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonContinuarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1171,7 +1176,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNingunoActionPerformed
 
     private void jButtonFinalizarAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarAlbumActionPerformed
-        // TODO add your handling code here:
+        System.exit(0); 
     }//GEN-LAST:event_jButtonFinalizarAlbumActionPerformed
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
@@ -1218,6 +1223,18 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             jTextAreaDescripcionAlbum.setEnabled(false);
         }
     }//GEN-LAST:event_jRadioButtonNoAlbumActionPerformed
+
+    private void jButtonFinalizarGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarGruposActionPerformed
+    if(jRadioButtonSiGrupos.isSelected()){
+        Group grupo = (Group) jListGrupos.getSelectedValue();
+        try {
+            sesion.addToPool(grupo.getId());
+        } catch (FlickrException ex) {
+            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        System.exit(0);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonFinalizarGruposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1271,9 +1288,9 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupVisibilidad;
     private javax.swing.JFileChooser fileChooserCarpetas;
     private javax.swing.JButton jButtonContinuar;
-    private javax.swing.JButton jButtonContinuarGrupos;
     private javax.swing.JButton jButtonElegir;
     private javax.swing.JButton jButtonFinalizarAlbum;
+    private javax.swing.JButton jButtonFinalizarGrupos;
     private javax.swing.JButton jButtonOpcionales;
     private javax.swing.JButton jButtonSubir;
     private javax.swing.JButton jButtonVolver;

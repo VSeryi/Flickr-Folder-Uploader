@@ -1221,7 +1221,7 @@
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonContinuarGrupos" max="32767" attributes="0"/>
+                              <Component id="jButtonFinalizarGrupos" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -1265,7 +1265,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPaneGrupos" min="-2" pref="139" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonContinuarGrupos" pref="79" max="32767" attributes="0"/>
+                      <Component id="jButtonFinalizarGrupos" pref="79" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1345,10 +1345,13 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="jButtonContinuarGrupos">
+            <Component class="javax.swing.JButton" name="jButtonFinalizarGrupos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Continuar"/>
+                <Property name="text" type="java.lang.String" value="Finalizar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonFinalizarGruposActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

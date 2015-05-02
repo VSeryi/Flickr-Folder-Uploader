@@ -11,6 +11,7 @@ import com.flickr4java.flickr.REST;
 import com.flickr4java.flickr.RequestContext;
 import com.flickr4java.flickr.auth.Auth;
 import com.flickr4java.flickr.auth.Permission;
+import com.flickr4java.flickr.groups.pools.PoolsInterface;
 import com.flickr4java.flickr.people.PeopleInterface;
 import com.flickr4java.flickr.people.User;
 import com.flickr4java.flickr.photos.licenses.LicensesInterface;
@@ -178,5 +179,11 @@ public class Sesion {
            for (int i = 1; i < fotosSubidas.size(); i++) {
                photoSeters.addPhoto(photoSet.getId(), fotosSubidas.get(i));
            }
+    }
+    
+    public void addToPool(String groupId) throws FlickrException{
+       PoolsInterface poolers = miFlickr.getPoolsInterface();
+       for(String s : fotosSubidas)
+               poolers.add(s, groupId);
     }
 }
