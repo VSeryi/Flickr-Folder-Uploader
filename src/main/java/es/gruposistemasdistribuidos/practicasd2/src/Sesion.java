@@ -130,10 +130,7 @@ public class Sesion {
         boolean completada = false;
         while (!completada) {
             boolean estaCompletada = true;
-            System.out.println(tickets.size());
             for (Ticket t : inter.checkTickets(tickets)) {
-                System.out.println(t.getTicketId() + t.getStatus());
-                System.out.println(t.getTicketId() + t.hasCompleted());
                 estaCompletada = estaCompletada && (t.getStatus() > 0);
             }
             completada = estaCompletada;
@@ -143,7 +140,6 @@ public class Sesion {
             fotosSubidas.add(fotoId);
             try {
                 if (metaData.getLicencia() != -1) {
-                    System.out.println("LA LICENSIA ES "+ metaData.getLicencia());
                     licenser.setLicense(fotoId, metaData.getLicencia());
                 }
             } catch (FlickrException ex) {
