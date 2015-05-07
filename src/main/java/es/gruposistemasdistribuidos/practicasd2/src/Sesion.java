@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -40,6 +41,7 @@ public class Sesion {
     private boolean permiso;
     private Flickr miFlickr;
     private List<String> fotosSubidas;
+    public static boolean cancelado = false;
 
     public Flickr getMiFlickr() {
         return miFlickr;
@@ -73,7 +75,7 @@ public class Sesion {
         return permiso;
     }
 
-    public void uploadFolder(MetaData metaData) throws FlickrException {
+    public void uploadFolder(MetaData metaData, JProgressBar progressBar) throws FlickrException, InterruptedException {
 
         UploadMetaData metaDataFlickr = new UploadMetaData();
 
@@ -130,19 +132,26 @@ public class Sesion {
             }
         }
         UploadInterface inter = miFlickr.getUploadInterface();
-        boolean completada = false;
-        while (!completada) {
-            boolean estaCompletada = true;
+        int numTickets = tickets.size();
+        int completados = 0;
+        progressBar.setMaximum(numTickets);
+        progressBar.setString("Subidos "+completados+" de "+numTickets+" archivos.");
+        while (!(completados >= numTickets)) {
             for (Ticket t : inter.checkTickets(tickets)) {
-                estaCompletada = estaCompletada && (t.getStatus() > 0);
+                if (t.getStatus() > 0) {
+                    completados++;
+                    progressBar.setValue(completados);
+                    progressBar.setString("Subidos "+completados+" de "+numTickets+" archivos.");
+                };
             }
-            completada = estaCompletada;
         }
+
         for (Ticket t : inter.checkTickets(tickets)) {
             String fotoId = t.getPhotoId();
             fotosSubidas.add(fotoId);
             try {
                 if (metaData.getLicencia() != -1) {
+                    System.out.println(metaData.getLicencia());
                     licenser.setLicense(fotoId, metaData.getLicencia());
                 }
             } catch (FlickrException ex) {
@@ -170,20 +179,22 @@ public class Sesion {
 
         }
 
-        
     }
-    public void createAlbum(String title, String decription) throws FlickrException{
-       PhotosetsInterface photoSeters = miFlickr.getPhotosetsInterface();
-       Photoset photoSet = photoSeters.create(title, decription, fotosSubidas.get(0));
-       if(fotosSubidas.size() > 1)
-           for (int i = 1; i < fotosSubidas.size(); i++) {
-               photoSeters.addPhoto(photoSet.getId(), fotosSubidas.get(i));
-           }
+
+    public void createAlbum(String title, String decription) throws FlickrException {
+        PhotosetsInterface photoSeters = miFlickr.getPhotosetsInterface();
+        Photoset photoSet = photoSeters.create(title, decription, fotosSubidas.get(0));
+        if (fotosSubidas.size() > 1) {
+            for (int i = 1; i < fotosSubidas.size(); i++) {
+                photoSeters.addPhoto(photoSet.getId(), fotosSubidas.get(i));
+            }
+        }
     }
-    
-    public void addToPool(String groupId) throws FlickrException{
-       PoolsInterface poolers = miFlickr.getPoolsInterface();
-       for(String s : fotosSubidas)
-               poolers.add(s, groupId);
+
+    public void addToPool(String groupId) throws FlickrException {
+        PoolsInterface poolers = miFlickr.getPoolsInterface();
+        for (String s : fotosSubidas) {
+            poolers.add(s, groupId);
+        }
     }
 }
