@@ -2,6 +2,7 @@ es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$2.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$12.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$22.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$19.class
+es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$27.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$17.class
 es\gruposistemasdistribuidos\practicasd2\src\UploadPhoto.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$9.class
@@ -11,6 +12,7 @@ es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$3.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$6.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$14.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$24.class
+.netbeans_automatic_build
 es\gruposistemasdistribuidos\practicasd2\src\UploadPhoto$UploadFilenameFilter.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$13.class
 es\gruposistemasdistribuidos\practicasd2\src\MetaData.class
@@ -21,7 +23,9 @@ es\gruposistemasdistribuidos\practicasd2\auth\AutorizacionesFlickr.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$11.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$16.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$21.class
+es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$26.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$15.class
+es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$25.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$5.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$4.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$10.class
@@ -29,3 +33,4 @@ es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$20.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$23.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$7.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$18.class
+es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$28.class

@@ -8,6 +8,7 @@ package es.gruposistemasdistribuidos.practicasd2.gui;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.groups.Group;
 import es.gruposistemasdistribuidos.practicasd2.src.MetaData;
+import es.gruposistemasdistribuidos.practicasd2.src.ProgressMonitorDemo;
 import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
 import java.awt.Color;
 import java.awt.Component;
@@ -27,6 +28,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
     private Sesion sesion;
     private File carpeta;
+    private Thread procesoSubida, procesoProgreso;
 
     /**
      * Creates new form practiaSD2GUI
@@ -394,6 +396,11 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jButtonSubir.setText("Confirmar y Subir");
         jButtonSubir.setDoubleBuffered(true);
         jButtonSubir.setOpaque(false);
+        jButtonSubir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonSubirMouseClicked(evt);
+            }
+        });
         jButtonSubir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSubirActionPerformed(evt);
@@ -659,7 +666,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jButtonFinalizarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
                         .addGap(241, 241, 241)
@@ -824,7 +831,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -849,93 +856,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElegirActionPerformed
-        int returnVal = fileChooserCarpetas.showOpenDialog(jPanelSubir);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            carpeta = fileChooserCarpetas.getSelectedFile();
-            jLabelRuta.setText(carpeta.getAbsolutePath());
-        } else {
-
-        }
-    }//GEN-LAST:event_jButtonElegirActionPerformed
-
-    private void jRadioButtonFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFotoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonFotoActionPerformed
-
-    private void jRadioButtonSeguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSeguraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonSeguraActionPerformed
-
-    private void jButtonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirActionPerformed
-   
-        for(Component c: jPanelSubSubir.getComponents()){
-            c.setEnabled(false);
-        }
-        for(Component c: jPanelProgressBar.getComponents()){
-            c.setVisible(true);
-        };
-        String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getActionCommand());
-        String tipoContenido = String.valueOf(buttonGroupTipo.getSelection().getActionCommand());
-        int privacidad;
-        if (jRadioButtonPrivado.isSelected()) {
-            privacidad = 5;
-        } else {
-            privacidad = 1;
-            if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
-                privacidad = 4;
-            } else if (jCheckBoxFamiliares.isSelected()) {
-                privacidad = 3;
-            } else if (jCheckBoxAmigos.isSelected()) {
-                privacidad = 2;
-            }
-        }
-        MetaData metaData = new MetaData(carpeta, seguridad, tipoContenido, privacidad);
-        if (!jTextFieldAgregarTitulo.getText().isEmpty()) {
-            metaData.setTitulo(jTextFieldAgregarTitulo.getText());
-        }
-        if (!jTextFieldAgregarDescripcion.getText().isEmpty()) {
-            metaData.setDescripcion(jTextFieldAgregarDescripcion.getText());
-        }
-        if (!jTextFieldAgregarEtiquetas.getText().isEmpty()) {
-            String[] etiquetas = jTextFieldAgregarEtiquetas.getText().split(" ");
-            for (String s : etiquetas) {
-                metaData.getEtiquetas().add(s);
-            }
-        }
-        if (!jTextFieldAgregarPersonas.getText().isEmpty()) {
-            String[] personas = jTextFieldAgregarPersonas.getText().split(" ");
-            for (String s : personas) {
-                metaData.getPersonas().add(s);
-            }
-        }
-
-        metaData.setLicencia(Integer.valueOf(buttonGroupLicencia.getSelection().getActionCommand()));
-
-        try {
-            sesion.uploadFolder(metaData, jProgressBar);
-        } catch (FlickrException ex) {
-            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        jLayeredPaneSubir.setVisible(false);
-        if (metaData.getTipoContenido().equals("1")) {
-            jLabelTipoContenidoAlbum.setText("Fotos");
-            jLabelTipoContenidoGrupos.setText("Fotos");
-        } else if (metaData.getTipoContenido().equals("2")) {
-            jLabelTipoContenidoAlbum.setText("Capturas de Pantalla");
-            jLabelTipoContenidoGrupos.setText("Capturas de Pantalla");
-        } else {
-            jLabelTipoContenidoAlbum.setText("Arte/Ilustraciones");
-            jLabelTipoContenidoGrupos.setText("Arte/Ilustraciones");
-        }
-        jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
-        jLayeredPaneAlbum.setVisible(true);
-        
-    }//GEN-LAST:event_jButtonSubirActionPerformed
-
     private void jTextFieldAgregarTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAgregarTituloActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldAgregarTituloActionPerformed
@@ -947,11 +867,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private void jRadioButtonCreativeCommonsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCreativeCommonsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonCreativeCommonsActionPerformed
-
-    private void jButtonOpcionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcionalesActionPerformed
-        jLayeredPaneSubir.setVisible(false);
-        jLayeredPaneOpcional.setVisible(true);
-    }//GEN-LAST:event_jButtonOpcionalesActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         jLayeredPaneOpcional.setVisible(false);
@@ -970,59 +885,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_fileChooserCarpetasActionPerformed
 
-    private void jRadioButtonPrivadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPrivadoActionPerformed
-        jLabelPrivacidadElegida.setText("Sólo visible para ti");
-        jLabelPrivacidadElegida.setForeground(Color.RED);
-        jCheckBoxAmigos.setSelected(false);
-        jCheckBoxFamiliares.setSelected(false);
-        jCheckBoxAmigos.setEnabled(true);
-        jCheckBoxFamiliares.setEnabled(true);
-    }//GEN-LAST:event_jRadioButtonPrivadoActionPerformed
-
-    private void jRadioButtonPublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPublicoActionPerformed
-        jLabelPrivacidadElegida.setText("Visible para todos");
-        jLabelPrivacidadElegida.setForeground(Color.GREEN);
-        jCheckBoxAmigos.setSelected(false);
-        jCheckBoxFamiliares.setSelected(false);
-        jCheckBoxAmigos.setEnabled(false);
-        jCheckBoxFamiliares.setEnabled(false);
-    }//GEN-LAST:event_jRadioButtonPublicoActionPerformed
-
-    private void jCheckBoxAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAmigosActionPerformed
-        jLabelPrivacidadElegida.setForeground(Color.YELLOW);
-        if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
-            jLabelPrivacidadElegida.setText("Visible para tus amigos y tus familiares.");
-        } else {
-            if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
-                jLabelPrivacidadElegida.setText("Visible para tus amigos.");
-            } else if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
-                jLabelPrivacidadElegida.setText("Visible para tus familiares.");
-
-            } else {
-                jRadioButtonPrivadoActionPerformed(null);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxAmigosActionPerformed
-
-    private void jCheckBoxFamiliaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFamiliaresActionPerformed
-        jLabelPrivacidadElegida.setForeground(Color.YELLOW);
-        if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
-            jLabelPrivacidadElegida.setText("Visible para tus amigos y tus familiares.");
-        } else {
-            if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
-                jLabelPrivacidadElegida.setText("Visible para tus familiares.");
-            } else if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
-                jLabelPrivacidadElegida.setText("Visible para tus amigos.");
-            } else {
-                jRadioButtonPrivadoActionPerformed(null);
-            }
-        }
-    }//GEN-LAST:event_jCheckBoxFamiliaresActionPerformed
-
-    private void jCheckBoxAmigosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCheckBoxAmigosPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxAmigosPropertyChange
-
     private void jRadioButtonSiGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiGruposActionPerformed
         jListGrupos.setEnabled(true);
     }//GEN-LAST:event_jRadioButtonSiGruposActionPerformed
@@ -1030,10 +892,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private void jRadioButtonNoGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNoGruposActionPerformed
         jListGrupos.setEnabled(false);
     }//GEN-LAST:event_jRadioButtonNoGruposActionPerformed
-
-    private void jRadioButtonCapturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCapturaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonCapturaActionPerformed
 
     private void jRadioButtonNingunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonNingunoActionPerformed
         // TODO add your handling code here:
@@ -1099,6 +957,168 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }
         System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonFinalizarGruposActionPerformed
+
+    private void jButtonElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElegirActionPerformed
+        int returnVal = fileChooserCarpetas.showOpenDialog(jPanelSubir);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            carpeta = fileChooserCarpetas.getSelectedFile();
+            jLabelRuta.setText(carpeta.getAbsolutePath());
+        } else {
+
+        }
+    }//GEN-LAST:event_jButtonElegirActionPerformed
+
+    private void jCheckBoxFamiliaresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFamiliaresActionPerformed
+        jLabelPrivacidadElegida.setForeground(Color.YELLOW);
+        if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
+            jLabelPrivacidadElegida.setText("Visible para tus amigos y tus familiares.");
+        } else {
+            if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
+                jLabelPrivacidadElegida.setText("Visible para tus familiares.");
+            } else if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
+                jLabelPrivacidadElegida.setText("Visible para tus amigos.");
+            } else {
+                jRadioButtonPrivadoActionPerformed(null);
+            }
+        }
+    }//GEN-LAST:event_jCheckBoxFamiliaresActionPerformed
+
+    private void jRadioButtonPublicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPublicoActionPerformed
+        jLabelPrivacidadElegida.setText("Visible para todos");
+        jLabelPrivacidadElegida.setForeground(Color.GREEN);
+        jCheckBoxAmigos.setSelected(false);
+        jCheckBoxFamiliares.setSelected(false);
+        jCheckBoxAmigos.setEnabled(false);
+        jCheckBoxFamiliares.setEnabled(false);
+    }//GEN-LAST:event_jRadioButtonPublicoActionPerformed
+
+    private void jRadioButtonPrivadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonPrivadoActionPerformed
+        jLabelPrivacidadElegida.setText("Sólo visible para ti");
+        jLabelPrivacidadElegida.setForeground(Color.RED);
+        jCheckBoxAmigos.setSelected(false);
+        jCheckBoxFamiliares.setSelected(false);
+        jCheckBoxAmigos.setEnabled(true);
+        jCheckBoxFamiliares.setEnabled(true);
+    }//GEN-LAST:event_jRadioButtonPrivadoActionPerformed
+
+    private void jRadioButtonFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonFotoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonFotoActionPerformed
+
+    private void jRadioButtonCapturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonCapturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonCapturaActionPerformed
+
+    private void jButtonOpcionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOpcionalesActionPerformed
+        jLayeredPaneSubir.setVisible(false);
+        jLayeredPaneOpcional.setVisible(true);
+    }//GEN-LAST:event_jButtonOpcionalesActionPerformed
+
+    private void jRadioButtonSeguraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSeguraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButtonSeguraActionPerformed
+
+    private void jButtonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirActionPerformed
+
+        for (Component c : jPanelSubSubir.getComponents()) {
+            c.setEnabled(false);
+        }
+        for (Component c : jPanelProgressBar.getComponents()) {
+            c.setVisible(true);
+        };
+       
+//        jPanelSubSubir.setVisible(false);
+//        jPanelProgressBar.setVisible(true);
+        String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getActionCommand());
+        String tipoContenido = String.valueOf(buttonGroupTipo.getSelection().getActionCommand());
+        int privacidad;
+        if (jRadioButtonPrivado.isSelected()) {
+            privacidad = 5;
+        } else {
+            privacidad = 1;
+            if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
+                privacidad = 4;
+            } else if (jCheckBoxFamiliares.isSelected()) {
+                privacidad = 3;
+            } else if (jCheckBoxAmigos.isSelected()) {
+                privacidad = 2;
+            }
+        }
+        MetaData metaData = new MetaData(carpeta, seguridad, tipoContenido, privacidad);
+        if (!jTextFieldAgregarTitulo.getText().isEmpty()) {
+            metaData.setTitulo(jTextFieldAgregarTitulo.getText());
+        }
+        if (!jTextFieldAgregarDescripcion.getText().isEmpty()) {
+            metaData.setDescripcion(jTextFieldAgregarDescripcion.getText());
+        }
+        if (!jTextFieldAgregarEtiquetas.getText().isEmpty()) {
+            String[] etiquetas = jTextFieldAgregarEtiquetas.getText().split(" ");
+            for (String s : etiquetas) {
+                metaData.getEtiquetas().add(s);
+            }
+        }
+        if (!jTextFieldAgregarPersonas.getText().isEmpty()) {
+            String[] personas = jTextFieldAgregarPersonas.getText().split(" ");
+            for (String s : personas) {
+                metaData.getPersonas().add(s);
+            }
+        }
+
+        metaData.setLicencia(Integer.valueOf(buttonGroupLicencia.getSelection().getActionCommand()));
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        ProgressMonitorDemo monitor = new ProgressMonitorDemo(metaData, sesion);
+        System.out.println("entro en el try, subiendo....");
+
+        jLayeredPaneSubir.setVisible(false);
+        switch (metaData.getTipoContenido()) {
+            case "1":
+            jLabelTipoContenidoAlbum.setText("Fotos");
+            jLabelTipoContenidoGrupos.setText("Fotos");
+            break;
+            case "2":
+            jLabelTipoContenidoAlbum.setText("Capturas de Pantalla");
+            jLabelTipoContenidoGrupos.setText("Capturas de Pantalla");
+            break;
+            default:
+            jLabelTipoContenidoAlbum.setText("Arte/Ilustraciones");
+            jLabelTipoContenidoGrupos.setText("Arte/Ilustraciones");
+            break;
+        }
+        jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
+        jLayeredPaneAlbum.setVisible(true);
+        
+
+    }//GEN-LAST:event_jButtonSubirActionPerformed
+
+    private void jCheckBoxAmigosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCheckBoxAmigosPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBoxAmigosPropertyChange
+
+    private void jCheckBoxAmigosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAmigosActionPerformed
+        jLabelPrivacidadElegida.setForeground(Color.YELLOW);
+        if (jCheckBoxAmigos.isSelected() && jCheckBoxFamiliares.isSelected()) {
+            jLabelPrivacidadElegida.setText("Visible para tus amigos y tus familiares.");
+        } else {
+            if (jCheckBoxAmigos.isSelected() && !jCheckBoxFamiliares.isSelected()) {
+                jLabelPrivacidadElegida.setText("Visible para tus amigos.");
+            } else if (jCheckBoxFamiliares.isSelected() && !jCheckBoxAmigos.isSelected()) {
+                jLabelPrivacidadElegida.setText("Visible para tus familiares.");
+
+            } else {
+                jRadioButtonPrivadoActionPerformed(null);
+            }
+        }
+    }//GEN-LAST:event_jCheckBoxAmigosActionPerformed
+
+    private void jButtonSubirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSubirMouseClicked
+      
+    }//GEN-LAST:event_jButtonSubirMouseClicked
 
     /**
      * @param args the command line arguments

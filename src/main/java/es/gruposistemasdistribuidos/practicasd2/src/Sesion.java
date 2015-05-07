@@ -22,6 +22,12 @@ import com.flickr4java.flickr.photosets.PhotosetsInterface;
 import com.flickr4java.flickr.uploader.UploadMetaData;
 import com.flickr4java.flickr.uploader.Uploader;
 import es.gruposistemasdistribuidos.practicasd2.auth.AutorizacionesFlickr;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyVetoException;
+import java.beans.VetoableChangeListener;
+import java.beans.VetoableChangeSupport;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -29,7 +35,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JProgressBar;
 
 /**
  *
@@ -42,6 +47,7 @@ public class Sesion {
     private Flickr miFlickr;
     private List<String> fotosSubidas;
     public static boolean cancelado = false;
+    public int completados = 0;
 
     public Flickr getMiFlickr() {
         return miFlickr;
@@ -75,8 +81,7 @@ public class Sesion {
         return permiso;
     }
 
-    public void uploadFolder(MetaData metaData, JProgressBar progressBar) throws FlickrException, InterruptedException {
-
+    public void uploadFolder(MetaData metaData) throws FlickrException, PropertyVetoException {
         UploadMetaData metaDataFlickr = new UploadMetaData();
 
         //1 : Public 2 : Friends only 3 : Family only 4 : Friends and Family 5 : Private
@@ -120,28 +125,41 @@ public class Sesion {
         LicensesInterface licenser = miFlickr.getLicensesInterface();
         PeopleInterface peopler = miFlickr.getPeopleInterface();
 
-        Set<String> tickets = new HashSet<String>();
+        List<File> archivosValidos = new ArrayList();
+
         for (File f : metaData.getCarpeta().listFiles()) {
-            if (f.isFile()) {
-                try {
-                    String ticketName = uploader.upload(f, metaDataFlickr);
-                    tickets.add(ticketName);
-                } catch (FlickrException ex) {
-                    Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
-                }
+
+            archivosValidos.add(f);
+        }
+        Set<String> tickets = new HashSet<String>();
+        int numFotos = archivosValidos.size();
+//        progressBar.setMaximum(numFotos);
+//        progressBar.setString("Subidos " + completados + " de " + numFotos + " archivos.");
+        for (File f : archivosValidos) {
+
+            try {
+                String ticketName = uploader.upload(f, metaDataFlickr);
+                tickets.add(ticketName);
+
+            } catch (FlickrException ex) {
+                Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
             }
+
         }
         UploadInterface inter = miFlickr.getUploadInterface();
         int numTickets = tickets.size();
-        int completados = 0;
-        progressBar.setMaximum(numTickets);
-        progressBar.setString("Subidos "+completados+" de "+numTickets+" archivos.");
+        System.out.println(numTickets);
+//        int completados = 0;
+//        progressBar.setMaximum(numTickets);
+//        progressBar.setString("Subidos "+completados+" de "+numTickets+" archivos.");
         while (!(completados >= numTickets)) {
             for (Ticket t : inter.checkTickets(tickets)) {
                 if (t.getStatus() > 0) {
-                    completados++;
-                    progressBar.setValue(completados);
-                    progressBar.setString("Subidos "+completados+" de "+numTickets+" archivos.");
+                    System.out.println("DEBERIA MOSTRARSE AQUI");
+                    setCompletados(completados + 1);
+//                    progressBar.setValue(completados);
+//                    progressBar.setString("Subidos " + completados + " de " + numTickets + " archivos.");
+
                 };
             }
         }
@@ -197,4 +215,17 @@ public class Sesion {
             poolers.add(s, groupId);
         }
     }
+
+    public int getCompletados() {
+        return completados;
+    }
+
+    public void setCompletados(int completados) throws PropertyVetoException {
+        int oldCompletados = this.completados;
+        this.completados = completados;
+        
+        throw new PropertyVetoException( "the value change rejected",new PropertyChangeEvent(this, "completados", oldCompletados, completados));
+    }
+
+
 }
