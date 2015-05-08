@@ -132,13 +132,14 @@ public class Sesion {
             }
             UploadInterface inter = miFlickr.getUploadInterface();
             List<Ticket> tickets = null;
-            int numTickets = tickets.size();
+            int numTickets = ticketsNames.size();
             StringBuilder error = new StringBuilder();
             error.append("No se han podido subir los siguientes archivos: ");
-            while (!(completados >= numTickets)) {
+            while (!(completados >= (numTickets*2))) {
                 tickets = inter.checkTickets(ticketsNames);
                 for (Ticket t : tickets) {
                     if (t.getStatus() > 0) {
+                        ticketsNames.remove(t.getTicketId());
                         setCompletados(completados + 1);
                         if (t.getStatus() == 2) {
                             error.append("  - " + files.get(tickets.indexOf(t)));
@@ -152,7 +153,7 @@ public class Sesion {
                 sesion.getFotosSubidas().add(fotoId);
                 try {
                     if (metaData.getLicencia() != -1) {
-                        System.out.println(metaData.getLicencia());
+                        //System.out.println(metaData.getLicencia());
                         licenser.setLicense(fotoId, metaData.getLicencia());
                     }
                 } catch (FlickrException ex) {
@@ -179,7 +180,7 @@ public class Sesion {
                 }
                 
             }
-            
+            setCompletados(completados+1);
             return null;
         }
         
@@ -237,10 +238,7 @@ public class Sesion {
     public boolean isPermiso() {
         return permiso;
     }
-    
-    public void uploadFolder(MetaData metaData) throws FlickrException, PropertyVetoException {
-        
-    }
+
     
     public void createAlbum(String title, String decription) throws FlickrException {
         PhotosetsInterface photoSeters = miFlickr.getPhotosetsInterface();

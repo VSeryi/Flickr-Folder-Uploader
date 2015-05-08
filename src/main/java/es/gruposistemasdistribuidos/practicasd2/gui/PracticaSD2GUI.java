@@ -892,6 +892,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             if (jTextAreaDescripcionAlbum.getText().isEmpty()) {
                 error.append("No se ha introduccido la descripción del album\n");
             }
+            Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(this, error, "Error al crear el album.", JOptionPane.ERROR_MESSAGE);
 
         } else {
@@ -915,6 +916,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
             if (jTextAreaDescripcionAlbum.getText().isEmpty()) {
                 error.append("No se ha introduccido la descripción del album\n");
             }
+            Toolkit.getDefaultToolkit().beep();
             JOptionPane.showMessageDialog(this, error, "Error al crear el album.", JOptionPane.ERROR_MESSAGE);
 
         } else {
@@ -973,6 +975,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 }
                 System.exit(0);
             } else {
+                Toolkit.getDefaultToolkit().beep();
                 JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún grupo.", "Error al seleccionar la pool.", JOptionPane.ERROR_MESSAGE);
             }
         }
