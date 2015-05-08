@@ -654,7 +654,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(jButtonFinalizarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
                         .addGap(241, 241, 241)
@@ -819,7 +819,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -974,14 +974,18 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 try {
                     sesion.addToPool(grupo.getId());
                 } catch (FlickrException ex) {
-                    Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+                   // Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(this, "El grupo seleccionado no es compatible con tus archivos: " + ex.toString(), "Error al seleccionar el grupo", JOptionPane.ERROR_MESSAGE);
                 }
-                System.exit(0);
             } else {
                 Toolkit.getDefaultToolkit().beep();
                 JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún grupo.", "Error al seleccionar la pool.", JOptionPane.ERROR_MESSAGE);
             }
+        }else{
+           System.exit(0); 
         }
+        
     }//GEN-LAST:event_jButtonFinalizarGruposActionPerformed
 
     private void jButtonElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElegirActionPerformed
