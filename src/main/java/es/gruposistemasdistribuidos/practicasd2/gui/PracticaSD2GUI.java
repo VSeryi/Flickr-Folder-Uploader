@@ -1049,7 +1049,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonSeguraActionPerformed
 
     private void jButtonSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubirActionPerformed
-
         for (Component c : jPanelSubSubir.getComponents()) {
             c.setEnabled(false);
         }
@@ -1150,7 +1149,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                         }
                     }
                 } else if ("error" == evt.getPropertyName()) {
-                    System.out.println("ERROR");
                     String error = (String) evt.getNewValue();
                     Toolkit.getDefaultToolkit().beep();
                     JOptionPane.showMessageDialog(jPanelAlbum, error, "Error al subir archivos.", JOptionPane.ERROR_MESSAGE);
@@ -1159,6 +1157,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         });
         task.execute();
         //ProgressMonitorDemo monitor = new ProgressMonitorDemo(metaData, sesion);
+
 
 
     }//GEN-LAST:event_jButtonSubirActionPerformed

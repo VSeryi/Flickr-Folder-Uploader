@@ -48,7 +48,7 @@ public class Sesion {
         private int completados = 0;
         private Sesion sesion;
         private MetaData metaData;
-        private String error = "";
+        private int error = 0;
 
         public UploadTask(Sesion sesion, MetaData metaData) {
             this.sesion = sesion;
@@ -62,13 +62,12 @@ public class Sesion {
                     oldCompletados, completados);
         }
 
-        public String getError() {
+        public int getError() {
             return error;
         }
 
         public void setError(String error) {
-            String oldError = this.error;
-            this.error = error;
+            int oldError = this.error;
             this.getPropertyChangeSupport().firePropertyChange("error",
                     oldError, error);
         }
@@ -118,6 +117,8 @@ public class Sesion {
             if (!metaData.getSeguridad().equals("")) {
                 metaDataFlickr.setSafetyLevel(metaData.getSeguridad());
             }
+            String miError = "No se han podido subir los siguientes archivos: \n";
+            String errorOriginal = miError;
             RequestContext.getRequestContext().setAuth(miFlickr.getAuth());
             Uploader uploader = miFlickr.getUploader();
             LicensesInterface licenser = miFlickr.getLicensesInterface();
@@ -131,12 +132,13 @@ public class Sesion {
                     ticketsNames.add(ticketName);
                     files.add(f);
                     setCompletados(completados + 1);
+                }else{
+                    miError = miError +"  - " + f.getName()+": Formato incompatible.\n";
                 }
             }
             UploadInterface inter = miFlickr.getUploadInterface();
             List<Ticket> tickets;
             int numTickets = ticketsNames.size();
-            error = "No se han podido subir los siguientes archivos: ";
             while (!(completados >= (numTickets * 2))) {
                 tickets = inter.checkTickets(ticketsNames);
                 for (Ticket t : tickets) {
@@ -144,7 +146,7 @@ public class Sesion {
                         ticketsNames.remove(t.getTicketId());
                         setCompletados(completados + 1);
                         if (t.getStatus() == 2) {
-                            error = error +"  - " + files.get(tickets.indexOf(t))+"\n";
+                            miError = miError +"  - " + files.get(tickets.indexOf(t)).getName()+": Error en la subida.\n";
                         } else {
                             sesion.getFotosSubidas().add(t.getPhotoId());
                         }
@@ -179,8 +181,8 @@ public class Sesion {
                     }
                 }
             }
-            if(!error.equals("No se han podido subir los siguientes archivos: ")){
-                this.setError(error);
+            if(!miError.equals(errorOriginal)){
+                setError(miError);
             }
             setCompletados(completados + 1);
             return null;
