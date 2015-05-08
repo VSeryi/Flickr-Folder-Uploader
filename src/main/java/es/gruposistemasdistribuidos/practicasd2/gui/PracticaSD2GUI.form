@@ -289,9 +289,9 @@
                 <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
                   <ComponentRef name="buttonGroupLicencia"/>
                 </Property>
-                <Property name="mnemonic" type="int" value="55"/>
-                <Property name="text" type="java.lang.String" value="Public Domain Work"/>
-                <Property name="actionCommand" type="java.lang.String" value="7"/>
+                <Property name="mnemonic" type="int" value="10"/>
+                <Property name="text" type="java.lang.String" value="Public Domain Mark"/>
+                <Property name="actionCommand" type="java.lang.String" value="10"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -306,7 +306,7 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="56"/>
                 <Property name="text" type="java.lang.String" value="Public Domain Dedication (CC0)"/>
-                <Property name="actionCommand" type="java.lang.String" value="8"/>
+                <Property name="actionCommand" type="java.lang.String" value="9"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonPublicDomainDedicationActionPerformed"/>

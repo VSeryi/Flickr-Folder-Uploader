@@ -6,6 +6,7 @@
 package es.gruposistemasdistribuidos.practicasd2.gui;
 
 import com.flickr4java.flickr.FlickrException;
+import com.flickr4java.flickr.RequestContext;
 import com.flickr4java.flickr.groups.Group;
 import es.gruposistemasdistribuidos.practicasd2.src.MetaData;
 import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
@@ -21,6 +22,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.ProgressMonitor;
@@ -237,15 +239,15 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jPanelOpcional.add(jRadioButtonNinguno, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 90, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonPublicDomainWork);
-        jRadioButtonPublicDomainWork.setMnemonic('7');
-        jRadioButtonPublicDomainWork.setText("Public Domain Work");
-        jRadioButtonPublicDomainWork.setActionCommand("7");
+        jRadioButtonPublicDomainWork.setMnemonic('\n');
+        jRadioButtonPublicDomainWork.setText("Public Domain Mark");
+        jRadioButtonPublicDomainWork.setActionCommand("10");
         jPanelOpcional.add(jRadioButtonPublicDomainWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(401, 113, -1, -1));
 
         buttonGroupLicencia.add(jRadioButtonPublicDomainDedication);
         jRadioButtonPublicDomainDedication.setMnemonic('8');
         jRadioButtonPublicDomainDedication.setText("Public Domain Dedication (CC0)");
-        jRadioButtonPublicDomainDedication.setActionCommand("8");
+        jRadioButtonPublicDomainDedication.setActionCommand("9");
         jRadioButtonPublicDomainDedication.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButtonPublicDomainDedicationActionPerformed(evt);
@@ -927,6 +929,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            RequestContext.getRequestContext().setAuth(sesion.getMiFlickr().getAuth());
             jLayeredPaneAlbum.setVisible(false);
             DefaultListModel model = (DefaultListModel) jListGrupos.getModel();
             jListGrupos.setCellRenderer(new DefaultListCellRenderer() {
@@ -939,8 +942,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 }
             });
             try {
-                System.out.println(sesion.getMiFlickr().getApiKey());
-                System.out.println(sesion.getMiFlickr().getAuth().getPermission().getType());
                 for (Group g : sesion.getMiFlickr().getPoolsInterface().getGroups()) {
                     model.addElement(g);
                 }
@@ -1048,9 +1049,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         for (Component c : jPanelSubSubir.getComponents()) {
             c.setEnabled(false);
         }
-
-//        jPanelSubSubir.setVisible(false);
-//        jPanelProgressBar.setVisible(true);
         String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getActionCommand());
         String tipoContenido = String.valueOf(buttonGroupTipo.getSelection().getActionCommand());
         int privacidad;
@@ -1093,7 +1091,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         for (File f : metaData.getCarpeta().listFiles()) {
             String name = f.getName();
-             if (Sesion.isValidSuffix(name)) {
+            if (Sesion.isValidSuffix(name)) {
                 numArchivos++;
             }
 
@@ -1144,8 +1142,14 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                             }
                             jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
                             jLayeredPaneAlbum.setVisible(true);
+
                         }
                     }
+                } else if ("error" == evt.getPropertyName()) {
+                    System.out.println("ERROR");
+                    String error = (String) evt.getNewValue();
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(jPanelAlbum, error, "Error al subir archivos.", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

@@ -48,6 +48,7 @@ public class Sesion {
         private int completados = 0;
         private Sesion sesion;
         private MetaData metaData;
+        private String error = "";
 
         public UploadTask(Sesion sesion, MetaData metaData) {
             this.sesion = sesion;
@@ -59,6 +60,17 @@ public class Sesion {
             this.completados = completados;
             this.getPropertyChangeSupport().firePropertyChange("completados",
                     oldCompletados, completados);
+        }
+
+        public String getError() {
+            return error;
+        }
+
+        public void setError(String error) {
+            String oldError = this.error;
+            this.error = error;
+            this.getPropertyChangeSupport().firePropertyChange("error",
+                    oldError, error);
         }
 
         public int
@@ -124,8 +136,7 @@ public class Sesion {
             UploadInterface inter = miFlickr.getUploadInterface();
             List<Ticket> tickets;
             int numTickets = ticketsNames.size();
-            StringBuilder error = new StringBuilder();
-            error.append("No se han podido subir los siguientes archivos: ");
+            error = "No se han podido subir los siguientes archivos: ";
             while (!(completados >= (numTickets * 2))) {
                 tickets = inter.checkTickets(ticketsNames);
                 for (Ticket t : tickets) {
@@ -133,7 +144,7 @@ public class Sesion {
                         ticketsNames.remove(t.getTicketId());
                         setCompletados(completados + 1);
                         if (t.getStatus() == 2) {
-                            error.append("  - " + files.get(tickets.indexOf(t)));
+                            error = error +"  - " + files.get(tickets.indexOf(t))+"\n";
                         } else {
                             sesion.getFotosSubidas().add(t.getPhotoId());
                         }
@@ -143,7 +154,6 @@ public class Sesion {
             for (String fotoId : sesion.getFotosSubidas()) {
                 try {
                     if (metaData.getLicencia() != -1) {
-                        //System.out.println(metaData.getLicencia());
                         licenser.setLicense(fotoId, metaData.getLicencia());
                     }
                 } catch (FlickrException ex) {
@@ -168,7 +178,9 @@ public class Sesion {
                         Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-
+            }
+            if(!error.equals("No se han podido subir los siguientes archivos: ")){
+                this.setError(error);
             }
             setCompletados(completados + 1);
             return null;
@@ -230,8 +242,6 @@ public class Sesion {
     }
 
     public void createAlbum(String title, String decription) throws FlickrException {
-        System.out.println(miFlickr.getApiKey());
-        System.out.println(miFlickr.getAuth().getPermission().getType());
         RequestContext.getRequestContext().setAuth(miFlickr.getAuth());
         PhotosetsInterface photoSeters = miFlickr.getPhotosetsInterface();
         Photoset photoSet = photoSeters.create(title, decription, fotosSubidas.get(0));
