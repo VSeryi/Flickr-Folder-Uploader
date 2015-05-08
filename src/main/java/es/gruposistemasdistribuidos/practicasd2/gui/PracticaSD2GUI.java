@@ -8,10 +8,13 @@ package es.gruposistemasdistribuidos.practicasd2.gui;
 import com.flickr4java.flickr.FlickrException;
 import com.flickr4java.flickr.groups.Group;
 import es.gruposistemasdistribuidos.practicasd2.src.MetaData;
-import es.gruposistemasdistribuidos.practicasd2.src.ProgressMonitorDemo;
 import es.gruposistemasdistribuidos.practicasd2.src.Sesion;
+import es.gruposistemasdistribuidos.practicasd2.src.Sesion.UploadTask;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Toolkit;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,6 +22,8 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.ProgressMonitor;
 
 /**
  *
@@ -42,9 +47,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jLayeredPaneOpcional.setVisible(false);
         jLayeredPaneGrupos.setVisible(false);
         jPanelSubSubir.setVisible(true);
-                for(Component c: jPanelProgressBar.getComponents()){
-            c.setVisible(false);
-        };
         /*if (!(sesion.isPermiso())) {
          for (Component c : jPanelSubSubir.getComponents()) {
          c.setEnabled(false);
@@ -99,9 +101,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jRadioButtonPublica = new javax.swing.JRadioButton();
         jLayeredPaneSubir = new javax.swing.JLayeredPane();
         jPanelSubir = new javax.swing.JPanel();
-        jPanelProgressBar = new javax.swing.JPanel();
-        jProgressBar = new javax.swing.JProgressBar();
-        jButtonCancel = new javax.swing.JButton();
         jPanelSubSubir = new javax.swing.JPanel();
         jLabelPrivacidadElegida = new javax.swing.JLabel();
         jCheckBoxAmigos = new javax.swing.JCheckBox();
@@ -356,19 +355,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         jPanelSubir.setMinimumSize(new java.awt.Dimension(800, 330));
         jPanelSubir.setPreferredSize(new java.awt.Dimension(800, 330));
         jPanelSubir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelProgressBar.setOpaque(false);
-        jPanelProgressBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jProgressBar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jProgressBar.setOpaque(true);
-        jProgressBar.setStringPainted(true);
-        jPanelProgressBar.add(jProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 780, 40));
-
-        jButtonCancel.setText("Cancelar");
-        jPanelProgressBar.add(jButtonCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 490, 40));
-
-        jPanelSubir.add(jPanelProgressBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 800, 250));
 
         jPanelSubSubir.setOpaque(false);
         jPanelSubSubir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -666,7 +652,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addComponent(jButtonFinalizarAlbum, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelAlbumLayout.createSequentialGroup()
                         .addGap(241, 241, 241)
@@ -831,7 +817,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneGrupos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                .addComponent(jButtonFinalizarGrupos, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -898,38 +884,68 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNingunoActionPerformed
 
     private void jButtonFinalizarAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarAlbumActionPerformed
-        System.exit(0); 
+        if (jRadioButtonSiAlbum.isSelected() && ((jTextFieldTituloAlbum.getText().isEmpty()) || (jTextAreaDescripcionAlbum.getText().isEmpty()))) {
+            StringBuilder error = new StringBuilder();
+            if (jTextFieldTituloAlbum.getText().isEmpty()) {
+                error.append("No se ha introduccido el título del album\n");
+            }
+            if (jTextAreaDescripcionAlbum.getText().isEmpty()) {
+                error.append("No se ha introduccido la descripción del album\n");
+            }
+            JOptionPane.showMessageDialog(this, error, "Error al crear el album.", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            if (jRadioButtonSiAlbum.isSelected()) {
+                try {
+                    sesion.createAlbum(jTextFieldTituloAlbum.getText(), jTextAreaDescripcionAlbum.getText());
+                } catch (FlickrException ex) {
+                    Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButtonFinalizarAlbumActionPerformed
 
     private void jButtonContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonContinuarActionPerformed
-        if (jRadioButtonSiAlbum.isSelected()) {
+        if (jRadioButtonSiAlbum.isSelected() && ((jTextFieldTituloAlbum.getText().isEmpty()) || (jTextAreaDescripcionAlbum.getText().isEmpty()))) {
+            StringBuilder error = new StringBuilder();
+            if (jTextFieldTituloAlbum.getText().isEmpty()) {
+                error.append("No se ha introduccido el título del album\n");
+            }
+            if (jTextAreaDescripcionAlbum.getText().isEmpty()) {
+                error.append("No se ha introduccido la descripción del album\n");
+            }
+            JOptionPane.showMessageDialog(this, error, "Error al crear el album.", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            if (jRadioButtonSiAlbum.isSelected()) {
+                try {
+                    sesion.createAlbum(jTextFieldTituloAlbum.getText(), jTextAreaDescripcionAlbum.getText());
+                } catch (FlickrException ex) {
+                    Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            jLayeredPaneAlbum.setVisible(false);
+            DefaultListModel model = (DefaultListModel) jListGrupos.getModel();
+            jListGrupos.setCellRenderer(new DefaultListCellRenderer() {
+
+                @Override
+                public Component getListCellRendererComponent(JList jlist, Object e, int i, boolean bln, boolean bln1) {
+                    Component c = super.getListCellRendererComponent(jlist, e, i, bln, bln1);
+                    setText(((Group) e).getName());
+                    return c;
+                }
+            });
             try {
-                sesion.createAlbum(jTextFieldTituloAlbum.getText(), jTextAreaDescripcionAlbum.getText());
+                for (Group g : sesion.getMiFlickr().getPoolsInterface().getGroups()) {
+                    model.addElement(g);
+                }
             } catch (FlickrException ex) {
                 Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
             }
+            jListGrupos.repaint();
+            jLayeredPaneGrupos.setVisible(true);
         }
-        jLayeredPaneAlbum.setVisible(false);
-        DefaultListModel model = (DefaultListModel) jListGrupos.getModel();
-        jListGrupos.setCellRenderer(new DefaultListCellRenderer() {
-
-            @Override
-            public Component getListCellRendererComponent(JList jlist, Object e, int i, boolean bln, boolean bln1) {
-                Component c = super.getListCellRendererComponent(jlist, e, i, bln, bln1);
-                setText(((Group) e).getName());
-                return c;
-            }
-        });
-        try {
-            for (Group g : sesion.getMiFlickr().getPoolsInterface().getGroups()) {
-                model.addElement(g);
-            }
-        } catch (FlickrException ex) {
-            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jListGrupos.repaint();
-        jLayeredPaneGrupos.setVisible(true);
-
     }//GEN-LAST:event_jButtonContinuarActionPerformed
 
     private void jRadioButtonSiAlbumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSiAlbumActionPerformed
@@ -947,15 +963,19 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonNoAlbumActionPerformed
 
     private void jButtonFinalizarGruposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarGruposActionPerformed
-    if(jRadioButtonSiGrupos.isSelected()){
-        Group grupo = (Group) jListGrupos.getSelectedValue();
-        try {
-            sesion.addToPool(grupo.getId());
-        } catch (FlickrException ex) {
-            Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+        if (jRadioButtonSiGrupos.isSelected()) {
+            Group grupo = (Group) jListGrupos.getSelectedValue();
+            if (grupo != null) {
+                try {
+                    sesion.addToPool(grupo.getId());
+                } catch (FlickrException ex) {
+                    Logger.getLogger(PracticaSD2GUI.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.exit(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ha seleccionado ningún grupo.", "Error al seleccionar la pool.", JOptionPane.ERROR_MESSAGE);
+            }
         }
-    }
-        System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonFinalizarGruposActionPerformed
 
     private void jButtonElegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonElegirActionPerformed
@@ -1023,10 +1043,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
         for (Component c : jPanelSubSubir.getComponents()) {
             c.setEnabled(false);
         }
-        for (Component c : jPanelProgressBar.getComponents()) {
-            c.setVisible(true);
-        };
-       
+
 //        jPanelSubSubir.setVisible(false);
 //        jPanelProgressBar.setVisible(true);
         String seguridad = String.valueOf(buttonGroupSeguridad.getSelection().getActionCommand());
@@ -1044,7 +1061,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 privacidad = 2;
             }
         }
-        MetaData metaData = new MetaData(carpeta, seguridad, tipoContenido, privacidad);
+        final MetaData metaData = new MetaData(carpeta, seguridad, tipoContenido, privacidad);
         if (!jTextFieldAgregarTitulo.getText().isEmpty()) {
             metaData.setTitulo(jTextFieldAgregarTitulo.getText());
         }
@@ -1063,36 +1080,76 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 metaData.getPersonas().add(s);
             }
         }
-
         metaData.setLicencia(Integer.valueOf(buttonGroupLicencia.getSelection().getActionCommand()));
-        new Thread(new Runnable() {
+        final ProgressMonitor progressMonitor = new ProgressMonitor(this,
+                "Running a Long Task",
+                "", 0, 100);
+        int numArchivos = 0;
 
+        for (File f : metaData.getCarpeta().listFiles()) {
+            String name = f.getName();
+            String suffix = name.substring(name.lastIndexOf('.') + 1);
+            if (suffix.equals("png") || suffix.equals("jpg") || suffix.equals("mpg")
+                    || suffix.equals("mpeg") || suffix.equals("mov") || suffix.equals("mp4")
+                    || suffix.equals("gif") || suffix.equals("jpeg") || suffix.equals("bmp") || suffix.equals("avi")) {
+                numArchivos++;
+            }
+
+        }
+        final int numArchivosFinal = numArchivos;
+        progressMonitor.setProgress(0);
+        final UploadTask task = new Sesion.UploadTask(sesion, metaData);
+        task.addPropertyChangeListener(new PropertyChangeListener() {
             @Override
-            public void run() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            public void propertyChange(PropertyChangeEvent evt) {
+                if ("completados" == evt.getPropertyName()) {
+                    int completados = (Integer) evt.getNewValue();
+                    progressMonitor.setProgress(completados);
+                    progressMonitor.setMaximum(numArchivosFinal * 2);
+                    String message;
+                    if (completados <= (numArchivosFinal)) {
+                        message
+                                = String.format("Preparados " + completados + " de " + numArchivosFinal + " archivos.");
+                    } else {
+                        message
+                                = String.format("Subidos " + completados / 2 + " de " + numArchivosFinal + " archivos.");
+                    }
+                    progressMonitor.setNote(message);
+                    if (progressMonitor.isCanceled() || task.isDone()) {
+                        Toolkit.getDefaultToolkit().beep();
+                        if (progressMonitor.isCanceled()) {
+                            task.cancel(true);
+                            progressMonitor.setNote("Subida Cancelada.");
+                            for (Component c : jPanelSubSubir.getComponents()) {
+                                c.setEnabled(true);
+                            }
+                        } else {
+                            progressMonitor.close();
+                            jLayeredPaneSubir.setVisible(false);
+                            switch (metaData.getTipoContenido()) {
+                                case "1":
+                                    jLabelTipoContenidoAlbum.setText("Fotos");
+                                    jLabelTipoContenidoGrupos.setText("Fotos");
+                                    break;
+                                case "2":
+                                    jLabelTipoContenidoAlbum.setText("Capturas de Pantalla");
+                                    jLabelTipoContenidoGrupos.setText("Capturas de Pantalla");
+                                    break;
+                                default:
+                                    jLabelTipoContenidoAlbum.setText("Arte/Ilustraciones");
+                                    jLabelTipoContenidoGrupos.setText("Arte/Ilustraciones");
+                                    break;
+                            }
+                            jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
+                            jLayeredPaneAlbum.setVisible(true);
+                        }
+                    }
+                }
             }
         });
-        ProgressMonitorDemo monitor = new ProgressMonitorDemo(metaData, sesion);
-        System.out.println("entro en el try, subiendo....");
+        task.execute();
+        //ProgressMonitorDemo monitor = new ProgressMonitorDemo(metaData, sesion);
 
-        jLayeredPaneSubir.setVisible(false);
-        switch (metaData.getTipoContenido()) {
-            case "1":
-            jLabelTipoContenidoAlbum.setText("Fotos");
-            jLabelTipoContenidoGrupos.setText("Fotos");
-            break;
-            case "2":
-            jLabelTipoContenidoAlbum.setText("Capturas de Pantalla");
-            jLabelTipoContenidoGrupos.setText("Capturas de Pantalla");
-            break;
-            default:
-            jLabelTipoContenidoAlbum.setText("Arte/Ilustraciones");
-            jLabelTipoContenidoGrupos.setText("Arte/Ilustraciones");
-            break;
-        }
-        jTextFieldTituloAlbum.setText(metaData.getCarpeta().getName());
-        jLayeredPaneAlbum.setVisible(true);
-        
 
     }//GEN-LAST:event_jButtonSubirActionPerformed
 
@@ -1117,7 +1174,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jCheckBoxAmigosActionPerformed
 
     private void jButtonSubirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSubirMouseClicked
-      
+
     }//GEN-LAST:event_jButtonSubirMouseClicked
 
     /**
@@ -1171,7 +1228,6 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.ButtonGroup buttonGroupVisibilidad;
     private javax.swing.JFileChooser fileChooserCarpetas;
-    private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonContinuar;
     private javax.swing.JButton jButtonElegir;
     private javax.swing.JButton jButtonFinalizarAlbum;
@@ -1215,11 +1271,9 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAlbum;
     private javax.swing.JPanel jPanelGrupos;
     private javax.swing.JPanel jPanelOpcional;
-    private javax.swing.JPanel jPanelProgressBar;
     private javax.swing.JPanel jPanelSubAlbum;
     private javax.swing.JPanel jPanelSubSubir;
     private javax.swing.JPanel jPanelSubir;
-    private javax.swing.JProgressBar jProgressBar;
     private javax.swing.JRadioButton jRadioButtonArte;
     private javax.swing.JRadioButton jRadioButtonAtribucionCreativeCommons;
     private javax.swing.JRadioButton jRadioButtonCaptura;
