@@ -132,8 +132,8 @@ public class Sesion {
                     ticketsNames.add(ticketName);
                     files.add(f);
                     setCompletados(completados + 1);
-                }else{
-                    miError = miError +"  - " + f.getName()+": Formato incompatible.\n";
+                } else {
+                    miError = miError + "  - " + f.getName() + ": Formato incompatible.\n";
                 }
             }
             UploadInterface inter = miFlickr.getUploadInterface();
@@ -146,7 +146,7 @@ public class Sesion {
                         ticketsNames.remove(t.getTicketId());
                         setCompletados(completados + 1);
                         if (t.getStatus() == 2) {
-                            miError = miError +"  - " + files.get(tickets.indexOf(t)).getName()+": Error en la subida.\n";
+                            miError = miError + "  - " + files.get(tickets.indexOf(t)).getName() + ": Error en la subida.\n";
                         } else {
                             sesion.getFotosSubidas().add(t.getPhotoId());
                         }
@@ -161,27 +161,36 @@ public class Sesion {
                 } catch (FlickrException ex) {
                     Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                String userID;
+                String userID = null;
+                miError = miError + "No se han podido agregar a las siguientes personas:\n";
                 for (String s : metaData.getPersonas()) {
+                    User usuario = null;
+                    boolean encontrado = false;
                     try {
-                        userID = null;
-                        User usuario = peopler.findByEmail(s);
-                        if (usuario != null) {
-                            userID = usuario.getId();
-                        } else {
-                            usuario = peopler.findByUsername(s);
-                            if (usuario != null) {
-                                userID = usuario.getId();
-                            }
-
-                        }
+                        usuario = peopler.findByEmail(s);
+                        userID = usuario.getId();
+                        encontrado = true;
                         peopler.add(fotoId, sesion.getAutorizacion().getUserID(), null);
                     } catch (FlickrException ex) {
-                        Logger.getLogger(Sesion.class.getName()).log(Level.SEVERE, null, ex);
+
                     }
+                    if (!encontrado) {
+                        try {
+                            usuario = peopler.findByUsername(s);
+                            userID = usuario.getId();
+                            encontrado = true;
+                            peopler.add(fotoId, sesion.getAutorizacion().getUserID(), null);
+                        } catch (FlickrException ex2) {
+                           
+                        }
+                    }
+                    if(!encontrado){
+                        miError = miError + "  -: " + s + ": No Existe.\n";
+                    }
+                     
                 }
             }
-            if(!miError.equals(errorOriginal)){
+            if (!miError.equals(errorOriginal)) {
                 setError(miError);
             }
             setCompletados(completados + 1);
