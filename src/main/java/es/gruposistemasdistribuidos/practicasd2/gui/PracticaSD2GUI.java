@@ -1093,10 +1093,7 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
 
         for (File f : metaData.getCarpeta().listFiles()) {
             String name = f.getName();
-            String suffix = name.substring(name.lastIndexOf('.') + 1);
-            if (suffix.equals("png") || suffix.equals("jpg") || suffix.equals("mpg")
-                    || suffix.equals("mpeg") || suffix.equals("mov") || suffix.equals("mp4")
-                    || suffix.equals("gif") || suffix.equals("jpeg") || suffix.equals("bmp") || suffix.equals("avi")) {
+             if (Sesion.isValidSuffix(name)) {
                 numArchivos++;
             }
 

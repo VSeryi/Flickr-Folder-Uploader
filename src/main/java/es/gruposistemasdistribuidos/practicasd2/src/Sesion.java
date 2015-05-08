@@ -232,6 +232,7 @@ public class Sesion {
     public void createAlbum(String title, String decription) throws FlickrException {
         System.out.println(miFlickr.getApiKey());
         System.out.println(miFlickr.getAuth().getPermission().getType());
+        RequestContext.getRequestContext().setAuth(miFlickr.getAuth());
         PhotosetsInterface photoSeters = miFlickr.getPhotosetsInterface();
         Photoset photoSet = photoSeters.create(title, decription, fotosSubidas.get(0));
 
@@ -249,7 +250,7 @@ public class Sesion {
         }
     }
 
-    private static boolean isValidSuffix(String basefilename) {
+    public static boolean isValidSuffix(String basefilename) {
         String[] photoSuffixes = {"jpg", "jpeg", "png", "gif", "bmp", "tif", "tiff"};
         String[] videoSuffixes = {"3gp", "3gp", "avi", "mov", "mp4", "mpg", "mpeg", "wmv", "ogg", "ogv", "m2v"};
         if (basefilename.lastIndexOf('.') <= 0) {
