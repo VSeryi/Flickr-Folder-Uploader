@@ -3,16 +3,17 @@ es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$12.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$22.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$19.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$27.class
+es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$29.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$17.class
 es\gruposistemasdistribuidos\practicasd2\src\UploadPhoto.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$9.class
 es\gruposistemasdistribuidos\practicasd2\auth\CrearFichAutorizaciones.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI.class
+es\gruposistemasdistribuidos\practicasd2\src\Sesion$UploadTask.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$3.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$6.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$14.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$24.class
-.netbeans_automatic_build
 es\gruposistemasdistribuidos\practicasd2\src\UploadPhoto$UploadFilenameFilter.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$13.class
 es\gruposistemasdistribuidos\practicasd2\src\MetaData.class
@@ -30,6 +31,7 @@ es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$5.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$4.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$10.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$20.class
+es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$30.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$23.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$7.class
 es\gruposistemasdistribuidos\practicasd2\gui\PracticaSD2GUI$18.class

@@ -939,6 +939,8 @@ public class PracticaSD2GUI extends javax.swing.JFrame {
                 }
             });
             try {
+                System.out.println(sesion.getMiFlickr().getApiKey());
+                System.out.println(sesion.getMiFlickr().getAuth().getPermission().getType());
                 for (Group g : sesion.getMiFlickr().getPoolsInterface().getGroups()) {
                     model.addElement(g);
                 }
